@@ -12,10 +12,10 @@ jobs:
     steps:
       - checkout
       - run: apt-get update && apt-get -y install rsync
-      - run: cp ./floorwatchers/.env.production ./floorwatchers/.env
-      - run: cd ./floorwatchers/ && npm install
-      - run: cd ./floorwatchers/ && npm run build
-      - run: rsync -e "ssh -o StrictHostKeyChecking=no" -va ./packages/floorwatchers/build/ $USER@$IP:/var/www/floorwatchers.com/html/
+      - run: cp ./.env.production .env
+      - run: npm install
+      - run: npm run build
+      - run: rsync -e "ssh -o StrictHostKeyChecking=no" -va ./build/ $USER@$IP:/var/www/floorwatchers.com/html/
       - discord/status:
           fail_only: false
           # mentions: 'Nafis#1303,solfist3r#4247'
@@ -29,10 +29,10 @@ jobs:
     steps:
       - checkout
       - run: apt-get update && apt-get -y install rsync
-      - run: cp ./floorwatchers/.env.development ./floorwatchers/.env.production
-      - run: cd ./floorwatchers/ && npm install
-      - run: cd ./floorwatchers/ && npm run build
-      - run: rsync -e "ssh -o StrictHostKeyChecking=no" -va ./floorwatchers/build/ $USER@$IP:/var/www/dev.floorwatchers.com/html/
+      - run: cp ./.env.development ./.env.production
+      - run: cd npm install
+      - run: cd npm run build
+      - run: rsync -e "ssh -o StrictHostKeyChecking=no" -va ./build/ $USER@$IP:/var/www/dev.floorwatchers.com/html/
       - discord/status:
           fail_only: false
           # mentions: 'Nafis#1303,solfist3r#4247'
