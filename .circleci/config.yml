@@ -15,7 +15,7 @@ jobs:
       - run: cp ./.env.production .env
       - run: npm install
       - run: npm run build
-      - run: rsync -e "ssh -o StrictHostKeyChecking=no" -va ./dist/ $USER@$IP:/var/www/floorwatcherssociety.com/html/
+      - run: rsync -e -I "ssh -o StrictHostKeyChecking=no" -va ./html/ $USER@$IP:/var/www/floorwatcherssociety.com/
       - discord/status:
           fail_only: false
           # mentions: 'Nafis#1303,solfist3r#4247'
@@ -32,7 +32,7 @@ jobs:
       - run: cp ./.env.development ./.env.production
       - run: cd npm install
       - run: cd npm run build
-      - run: rsync -e "ssh -o StrictHostKeyChecking=no" -va ./dist/ $USER@$IP:/var/www/dev.floorwatcherssociety.com/html/
+      - run: rsync -e "ssh -o StrictHostKeyChecking=no" -va ./html $USER@$IP:/var/www/dev.floorwatcherssociety.com/
       - discord/status:
           fail_only: false
           # mentions: 'Nafis#1303,solfist3r#4247'
