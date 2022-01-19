@@ -1,16 +1,33 @@
 {
-    "include": ["src", "types"],
-    "exclude": ["node_modules"],
-    "compilerOptions": {
-        "noEmit": true,
-        "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "jsx": "react",
-        "strict": true,
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "typeRoots": ["node_modules/@types"]
-    }
+  "compilerOptions": {
+    "target": "es6",
+    "noEmitOnError": true,
+    "lib": [
+		"es5", "es6",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ],
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src"
+, "utils/utils.ts"  ]
 }
