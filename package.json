@@ -18,8 +18,8 @@
     ],
     "scripts": {
         "clean": "shx rm -rf dist .parcel-cache",
-        "build": "yarn clean && parcel build src/index.html --dist-dir html --public-url . --no-source-maps",
-        "start": "yarn clean && parcel src/index.html --public-url . --https",
+        "build": "yarn clean && parcel build src/index.html --dist-dir html",
+        "start": "yarn clean && parcel src/index.html --dist-dir html",
         "fmt": "prettier --write '{*,**/*}.{js,ts,jsx,tsx,json}'",
         "lint": "eslint . && prettier --check '{*,**/*}.{js,ts,jsx,tsx,json}'",
         "lint:fix": "eslint --fix . && yarn fmt",
