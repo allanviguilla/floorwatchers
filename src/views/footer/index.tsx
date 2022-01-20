@@ -24,7 +24,7 @@ export default function Footer() {
 			</Grid>
 		</Grid> */}
 		<Grid container justifyContent="center" >
-			<Grid item direction="column">
+			<Grid item>
 				<Typography>Copyright © 2022 Floor Watchers Society</Typography>
 			</Grid>
 		</Grid>

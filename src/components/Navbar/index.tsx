@@ -3,49 +3,90 @@ import React, { useLayoutEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
-
-import "./navbar.css";
+import { Grid, Box, MenuItem } from "@mui/material";
+import {
+	WalletMultiButton,
+	WalletDisconnectButton,
+  } from "@solana/wallet-adapter-react-ui";
+  import { useWallet } from "@solana/wallet-adapter-react";
+import {shortenAddress} from "../../utils/candy-machine";
 
 function Navbar() {
-	useLayoutEffect(() => {
-		function updateSize() {
-			if (window.innerWidth <= 600) {
-				if (document.getElementsByClassName("wallet-adapter-button")[0])
-					Array.from(document.getElementsByClassName('wallet-adapter-button') as HTMLCollectionOf<HTMLElement>)[0].style.marginRight = "20px";
-			}
-		}
-		window.addEventListener("resize", updateSize);
-		updateSize();
-		return () => window.removeEventListener("resize", updateSize);
-	}, []);
-
+	const wallet = useWallet();
 	return (
-		// <Box sx={{ flexGrow: 1 }}>
-		<AppBar position="static" className={'navbar-bg'}>
-			<Toolbar
-				sx={{
-					marginTop: "0px",
-					paddingLeft: "0!important",
-				}}
-			>
-				<Typography
-					variant="h6"
-					component="div"
-					sx={{ flexGrow: 1 }}
-					className="logo-container"
-				>
-				</Typography>
-				<div className="navbar-column">
-					<Toolbar>
-						<Grid container justifyContent="center" spacing={10}>
+		<Box sx={{ flexGrow: 1 }}>
+			<AppBar position="static" className={'navbar-bg'}>
+				<Toolbar>
+					<Typography
+						variant="h6"
+						component="div"
+						sx={{ flexGrow: 1 }}
+						className="logo-container"
+					>
+						Home
+					</Typography>
+					<MenuItem>
+						<Typography
+							variant="h6"
+						>
+							Mint
+						</Typography>
+					</MenuItem>
+					<MenuItem>
+						<Typography
+							variant="h6"
+						>
+							Utilities
+						</Typography>
+					</MenuItem>
+					<MenuItem>
+						<Typography
+							variant="h6"
+						>
+							Roadmap
+						</Typography>
+					</MenuItem>
 
-						</Grid>
-					</Toolbar>
-				</div>
-			</Toolbar>
-		</AppBar>
-		// </Box>
+					<MenuItem>
+						<Typography
+							variant="h6"
+						>
+							Team
+						</Typography>
+					</MenuItem>
+
+					<MenuItem>
+						<Typography
+							variant="h6"
+						>
+							FAQ
+						</Typography>
+					</MenuItem>
+					{!wallet.connected? (
+						<WalletMultiButton></WalletMultiButton>
+					):(
+						<WalletDisconnectButton>{wallet.publicKey ? shortenAddress(wallet.publicKey?.toString()) : <p>Disconnect</p>}</WalletDisconnectButton>
+					)}
+					{/* <MenuItem>
+
+					</MenuItem> */}
+					{/* <div className="navbar-column">
+						<Toolbar>
+							<Grid container justifyContent="center" spacing={10}>
+								<Typography
+									variant="h6"
+									component="div"
+									sx={{ flexGrow: 1 }}
+									className="logo-container"
+								>
+									Home
+								</Typography>
+							</Grid>
+						</Toolbar>
+					</div> */}
+				</Toolbar>
+			</AppBar>
+		</Box>
 	);
 }
 export default Navbar;
