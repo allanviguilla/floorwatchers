@@ -62,7 +62,7 @@ export default function Hero(){
 				</Typography> */}
 			</Grid>
 			<Grid container justifyContent={'center'}> 
-			<Grid item xs={6}>
+			<Grid item xs={8}>
 				<Typography align="center">
 				Floor Watchers Society provides 3333 members real-life utility with exclusive access to once in a lifetime luxury experiences at community and token holder chosen sporting events.
 				</Typography>

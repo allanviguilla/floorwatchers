@@ -9,7 +9,7 @@ export default function Roadmap() {
 			justifyContent={'center'}
 			alignContent={'center'}
 			spacing={'column'}
-			marginTop={'30px'}
+			marginTop={'50px'}
 		>
 			<Grid item>
 				<Typography variant={'h2'}>Roadmap</Typography>

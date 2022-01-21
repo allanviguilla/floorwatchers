@@ -20,7 +20,7 @@ export default function Team() {
 			justifyContent={'center'}
 			alignContent={'center'}
 			spacing={'column'}
-			marginTop={'30px'}
+			marginTop={'50px'}
 		>
 			<Typography variant="h2">Team</Typography>
 			<Grid container spacing={3} justifyContent={'center'} marginTop={'10px'}>
@@ -33,7 +33,7 @@ export default function Team() {
 						/>
 
 					</Grid>
-					<Typography align="center">Allan</Typography>
+					<Typography align="center" variant={"h5"}>Allan</Typography>
 				</Grid>
 				<Grid item xs={2}>
 					<Grid container justifyContent={'center'}>
@@ -44,7 +44,7 @@ export default function Team() {
 						/>
 
 					</Grid>
-					<Typography align="center">Dre</Typography>
+					<Typography align="center" variant={"h5"}>Dre</Typography>
 				</Grid>
 				<Grid item xs={2}>
 					<Grid container justifyContent={'center'}>
@@ -55,7 +55,7 @@ export default function Team() {
 						/>
 
 					</Grid>
-					<Typography align="center">Khalil</Typography>
+					<Typography align="center" variant={"h5"}>Khalil</Typography>
 				</Grid>
 				<Grid item xs={2}>
 					<Grid container justifyContent={'center'}>
@@ -66,7 +66,7 @@ export default function Team() {
 						/>
 
 					</Grid>
-					<Typography align="center">Rory</Typography>
+					<Typography align="center" variant={"h5"}>Rory</Typography>
 				</Grid>
 				<Grid item xs={2}>
 					<Grid container justifyContent={'center'}>
@@ -77,7 +77,29 @@ export default function Team() {
 						/>
 
 					</Grid>
-					<Typography align="center">Sira</Typography>
+					<Typography align="center" variant={"h5"}>Sira</Typography>
+				</Grid>
+				<Grid item xs={2}>
+					<Grid container justifyContent={'center'}>
+						<Avatar
+							alt="Juan"
+							src="/static/images/avatar/1.jpg"
+							sx={{ width: 150, height: 150 }}
+						/>
+
+					</Grid>
+					<Typography align="center" variant={"h5"}>Juan</Typography>
+				</Grid>
+				<Grid item xs={2}>
+					<Grid container justifyContent={'center'}>
+						<Avatar
+							alt="Sook"
+							src="/static/images/avatar/1.jpg"
+							sx={{ width: 150, height: 150 }}
+						/>
+
+					</Grid>
+					<Typography align="center" variant={"h5"}>Sook</Typography>
 				</Grid>
 			</Grid>
 		</Grid>
