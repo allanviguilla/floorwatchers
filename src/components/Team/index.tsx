@@ -24,7 +24,7 @@ export default function Team() {
 		>
 			<Typography variant="h2">Team</Typography>
 			<Grid container spacing={3} justifyContent={'center'} marginTop={'10px'}>
-				<Grid item xs={2}>
+				<Grid item xs={12} md={2}>
 					<Grid container justifyContent={'center'}>
 						<Avatar
 							alt="Remy Sharp"
@@ -35,7 +35,7 @@ export default function Team() {
 					</Grid>
 					<Typography align="center" variant={"h5"}>Allan</Typography>
 				</Grid>
-				<Grid item xs={2}>
+				<Grid item xs={12} md={2}>
 					<Grid container justifyContent={'center'}>
 						<Avatar
 							alt="Remy Sharp"
@@ -46,7 +46,7 @@ export default function Team() {
 					</Grid>
 					<Typography align="center" variant={"h5"}>Dre</Typography>
 				</Grid>
-				<Grid item xs={2}>
+				<Grid item xs={12} md={2}>
 					<Grid container justifyContent={'center'}>
 						<Avatar
 							alt="Remy Sharp"
@@ -57,7 +57,7 @@ export default function Team() {
 					</Grid>
 					<Typography align="center" variant={"h5"}>Khalil</Typography>
 				</Grid>
-				<Grid item xs={2}>
+				<Grid item xs={12} md={2}>
 					<Grid container justifyContent={'center'}>
 						<Avatar
 							alt="Rory"
@@ -68,7 +68,7 @@ export default function Team() {
 					</Grid>
 					<Typography align="center" variant={"h5"}>Rory</Typography>
 				</Grid>
-				<Grid item xs={2}>
+				<Grid item xs={12} md={2}>
 					<Grid container justifyContent={'center'}>
 						<Avatar
 							alt="Sira"
@@ -79,7 +79,7 @@ export default function Team() {
 					</Grid>
 					<Typography align="center" variant={"h5"}>Sira</Typography>
 				</Grid>
-				<Grid item xs={2}>
+				<Grid item xs={12} md={2}>
 					<Grid container justifyContent={'center'}>
 						<Avatar
 							alt="Juan"
@@ -90,7 +90,7 @@ export default function Team() {
 					</Grid>
 					<Typography align="center" variant={"h5"}>Juan</Typography>
 				</Grid>
-				<Grid item xs={2}>
+				<Grid item xs={12} md={2}>
 					<Grid container justifyContent={'center'}>
 						<Avatar
 							alt="Sook"
