@@ -11,7 +11,7 @@ export const AppLayout = React.memo(({ children } : AppLayoutProps) => {
 	return (
 		<div>
 			<Navbar />
-			<Container sx={{height: '95vh', marginBottom: '5px'}}>
+			<Container>
 				{children}
 			</Container>
 			<Footer></Footer>

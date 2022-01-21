@@ -23,7 +23,7 @@ export default function Hero(){
 				gutterBottom={true}
 				>
 					Floor Watchers Society</Typography>
-				<Typography 
+				{/* <Typography 
 				variant="h5" 
 				align="center" 
 				gutterBottom={true}
@@ -59,8 +59,16 @@ export default function Hero(){
 				>
 					<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
 				</a>
+				</Typography> */}
+			</Grid>
+			<Grid container justifyContent={'center'}> 
+			<Grid item xs={6}>
+				<Typography align="center">
+				Floor Watchers Society provides 3333 members real-life utility with exclusive access to once in a lifetime luxury experiences at community and token holder chosen sporting events.
 				</Typography>
 			</Grid>
+			</Grid>
+			
 		</Grid>
 	)
 }

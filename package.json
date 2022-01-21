@@ -32,6 +32,7 @@
         "@emotion/styled": "^11.6.0",
         "@fortawesome/free-brands-svg-icons": "^5.15.4",
         "@fortawesome/react-fontawesome": "^0.1.16",
+        "@mui/lab": "^5.0.0-alpha.65",
         "@mui/material": "^5.3.0",
         "@project-serum/anchor": "^0.20.1",
         "@solana/spl-token": "^0.1.8",
