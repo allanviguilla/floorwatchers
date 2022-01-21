@@ -1,9 +1,8 @@
 import React, { useLayoutEffect } from "react";
-
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Grid, Box, MenuItem } from "@mui/material";
+import { Grid, Box, MenuItem, Link } from "@mui/material";
 import {
 	WalletMultiButton,
 	WalletDisconnectButton,
@@ -17,14 +16,18 @@ function Navbar() {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" className={'navbar-bg'}>
 				<Toolbar>
+					
 					<Typography
 						variant="h6"
 						component="div"
 						sx={{ flexGrow: 1 }}
 						className="logo-container"
 					>
+						<Link href="/" sx={{color:'white'}}>
 						Home
+						</Link>
 					</Typography>
+					
 					<MenuItem>
 						<Typography
 							variant="h6"
