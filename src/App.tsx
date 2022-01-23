@@ -55,6 +55,7 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 						<AppLayout>
 							<Routes>
 								<Route path="/" element={<Home />} />
+								{/* <Route path="/login" element={<Login />} /> */}
 							</Routes>
 						</AppLayout>
 					</WalletModalProvider>
