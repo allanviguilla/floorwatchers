@@ -5,26 +5,27 @@ declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 #[program]
 pub mod fws_raffle_program {
     use super::*;
-    pub fn create_raffle(ctx: Context<Create>) -> ProgramResult {
+    pub fn create(ctx: Context<Create>) -> ProgramResult {
 		ctx.accounts.raffle_account.authority = *ctx.accounts.authority.key;
-		// ctx.accounts.raffle_account.spl_mint = ; 
-		ctx.accounts.raffle_account.mint_authority = *ctx.accounts.mint_update_authority.to_account_info().key;
 		ctx.accounts.raffle_account.claimed = false;
 		// ctx.accounts.raffle_account.reward_mint = ;
 		// ctx.accounts.raffle_account.reward_authority_bump = ;
         Ok(())
     }
 	
-    pub fn draw_raffle(ctx: Context<Draw>) -> ProgramResult {
+    pub fn draw(ctx: Context<Draw>) -> ProgramResult {
 
         Ok(())
     }
-	//update what? reward mint, reward authority
-    pub fn update_raffle(ctx: Context<Claim>) -> ProgramResult {
-
-        Ok(())
-    }
-    pub fn claim_raffle(ctx: Context<Update>) -> ProgramResult {
+	pub fn set_mint_authority(ctx: Context<SetMintAuth>) -> ProgramResult {
+		ctx.accounts.raffle_account.mint_authority = *ctx.accounts.mint_update_authority.to_account_info().key;
+		Ok(())
+	}
+	pub fn set_spl_mint(ctx: Context<SetSplMint>) -> ProgramResult {
+		ctx.accounts.raffle_account.spl_mint = *ctx.accounts.spl_mint.to_account_info().key;  
+		Ok(())
+	}
+    pub fn claim(ctx: Context<Claim>) -> ProgramResult {
 
         Ok(())
     }
@@ -35,13 +36,10 @@ pub mod fws_raffle_program {
 pub struct Create<'info> {
 	#[account(signer)]
 	authority: AccountInfo<'info>,
-	spl_mint: Account<'info, Mint>,
 	#[account(zero)]
 	raffle_account: Account<'info, RaffleAccount>,
-	mint_update_authority: AccountInfo<'info>,
 	reward_mint: Account<'info, Mint>,
 	reward_authority: AccountInfo<'info>
-	// system_program: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -59,11 +57,19 @@ pub struct Claim<'info> {
 }
 
 #[derive(Accounts)]
-pub struct Update<'info> {
+pub struct SetMintAuth<'info> {
 	#[account(signer)]
 	authority: AccountInfo<'info>,
+	mint_update_authority: AccountInfo<'info>,
+	raffle_account: Account<'info, RaffleAccount>,
 }
-
+#[derive(Accounts)]
+pub struct SetSplMint<'info> {
+	#[account(signer)]
+	authority: AccountInfo<'info>,
+	spl_mint: Account<'info, Mint>,
+	raffle_account: Account<'info, RaffleAccount>,
+}
 
 #[account]
 pub struct RaffleAccount {
