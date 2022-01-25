@@ -15,9 +15,9 @@ pub mod fws_raffle_program {
     //     Ok(())
     // }
 	
-    pub fn draw(ctx: Context<Draw>, mints: Vec<Vec<u8>>) -> ProgramResult {
+    pub fn draw(ctx: Context<Draw>, holders: Vec<Vec<u8>>) -> ProgramResult {
 		msg!("Hello World!");
-		for buffer in mints {
+		for buffer in holders {
 			let tmp_buffer = buffer.as_slice();
 			let mint = str::from_utf8(tmp_buffer);
 
@@ -49,7 +49,7 @@ pub struct Create<'info> {
 }
 
 #[derive(Accounts)]
-#[instruction(mints: Vec<Vec<u8>>)]
+#[instruction(holders: Vec<Vec<u8>>)]
 pub struct Draw<'info> {
 	#[account(signer)]
 	authority: AccountInfo<'info>,

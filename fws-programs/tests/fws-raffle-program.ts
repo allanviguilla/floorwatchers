@@ -11,12 +11,13 @@ describe('fws-raffle-program', () => {
     const program = anchor.workspace.FwsRaffleProgram as Program<FwsRaffleProgram>;
 
     const payer = anchor.web3.Keypair.generate();
-    const minters = ['lalala', 'astasfa'];
-    const buff_minters = minters.map((minter) => {
+	//replace this with array of holders 
+    const holders = ['lalala', 'astasfa'];
+    const buff_holders = holders.map((minter) => {
         return Buffer.from(minter);
     });
 	// new anchor.BN(minters)
-    console.log(buff_minters);
+    console.log(buff_holders);
     it('Draw!', async () => {
         await anchor.Provider.env()
             .connection.confirmTransaction(
@@ -26,7 +27,7 @@ describe('fws-raffle-program', () => {
             .catch((e) => console.log(e));
         try {
             const tx = await program.rpc.draw(
-				buff_minters, 
+				buff_holders, 
 				{
                 accounts: {
                     authority: payer.publicKey,
