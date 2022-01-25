@@ -1,11 +1,16 @@
 [programs.localnet]
-fws_verify = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+# fws_verify = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+fws_raffle_program = "7HGqiMfjvBZC8632q2YEePfU2m5BhzTmjkY11wsXyS8q"
+
+[programs.devnet]
+# fws_verify = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+fws_raffle_program = "7HGqiMfjvBZC8632q2YEePfU2m5BhzTmjkY11wsXyS8q"
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "/Users/khalilbrown/.config/solana/id.json"
 
 [scripts]
