@@ -687,6 +687,7 @@ version = "0.1.0"
 dependencies = [
  "anchor-lang 0.20.1",
  "anchor-spl",
+ "spl-token",
 ]
 
 [[package]]

@@ -10,7 +10,7 @@ fws_raffle_program = "7HGqiMfjvBZC8632q2YEePfU2m5BhzTmjkY11wsXyS8q"
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "devnet"
+cluster = "localnet"
 wallet = "/Users/khalilbrown/.config/solana/id.json"
 
 [scripts]
