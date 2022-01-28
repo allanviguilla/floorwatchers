@@ -1,9 +1,7 @@
 import * as anchor from '@project-serum/anchor';
 import { Program } from '@project-serum/anchor';
 import { FwsRaffleProgram } from '../target/types/fws_raffle_program';
-import { NodeWallet } from '@project-serum/anchor/dist/cjs/provider';
 import { PublicKey } from '@solana/web3.js';
-
 describe('fws-raffle-program', () => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const holders = require('./holders.json');
@@ -12,15 +10,11 @@ describe('fws-raffle-program', () => {
     anchor.setProvider(anchor.Provider.env());
 
     const program = anchor.workspace.FwsRaffleProgram as Program<FwsRaffleProgram>;
-    const raffleAccount = anchor.web3.Keypair.generate();
+	const raffleAccount = anchor.web3.Keypair.generate();
     const payer = anchor.web3.Keypair.generate();
-    //replace this with array of holders
-    // const holders = ['lalala', 'astasfa'];
     const buff_holders = holders.map((minter) => {
-        return Buffer.from(minter);
+		return new PublicKey(minter)
     });
-    // new anchor.BN(minters)
-    // console.log(buff_holders);
     it('Create!', async () => {
         console.log(raffleAccount.publicKey);
         try {
@@ -28,8 +22,6 @@ describe('fws-raffle-program', () => {
                 accounts: {
                     raffleAuthority: payer.publicKey,
                     raffleAccount: raffleAccount.publicKey,
-                    systemProgram: anchor.web3.SystemProgram.programId,
-                    rent: anchor.web3.SYSVAR_RENT_PUBKEY,
                 },
                 instructions: [await program.account.raffleAccount.createInstruction(raffleAccount)],
                 signers: [raffleAccount, payer],
@@ -49,6 +41,11 @@ describe('fws-raffle-program', () => {
             },
 			signers: [raffleAccount]
         });
+		const _raffleAccount = await program.account.raffleAccount.fetch(raffleAccount.publicKey);
+		const holders = _raffleAccount.holders as Array<any>;
+		for(let i=0; i<15; i++){
+			console.log(holders[i])
+		}
     });
     // it('Draw!', async () => {
     //     await anchor.Provider.env()
