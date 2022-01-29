@@ -36,20 +36,22 @@ pub mod fws_raffle_program {
 		
 		Ok(())
 	}
-	pub fn draw(ctx: Context<Draw>, holders: Vec<Vec<u8>>) -> ProgramResult {
-
-		// for buffer in holders {
-		// 	let tmp_buffer = buffer.as_slice();
-		// 	let mint = str::from_utf8(tmp_buffer);
-		// 	// if raffle_account.holders.is_some(){
-
-		// 	// }
-		// 	msg!("{:?}", mint);
-		// }
-		// msg!("account: {}", ctx.accounts.authority.key);
-
+	pub fn draw(ctx: Context<Draw>) -> ProgramResult {
+		let raffle_account = ctx.accounts.raffle_account.load_mut();
+		let mut account = raffle_account.unwrap();
+		let accounts_end = account.head as usize;
+		let mut holders = account.holders.iter_mut();
+		let mut valid_holders : Vec<RaffleAccountData> = Vec::with_capacity(accounts_end);
+		msg!("Valid Holders Len: {}", valid_holders.len());
+		msg!("Account End: {}", accounts_end);
+		for n in 0 .. accounts_end {
+			let holder = *holders.next().unwrap();
+			msg!("Holder: {:?}", n);
+			valid_holders.push(holder);
+		}
+		
+		msg!("Valid Holders: {:?}", valid_holders);
 		Ok(())
-		// Err((MyError))
 	}
 	pub fn claim(ctx: Context<Claim>) -> ProgramResult {
 		Ok(())
@@ -70,8 +72,9 @@ pub struct Create<'info> {
 
 #[derive(Accounts)]
 pub struct Draw<'info> {
-	#[account(signer)]
-	authority: AccountInfo<'info>,
+	#[account(mut)]
+	raffle_account: AccountLoader<'info, RaffleAccount>,
+	raffle_authority: Signer<'info>,
 }
 
 #[derive(Accounts)]
@@ -96,7 +99,7 @@ pub struct RaffleAccount {
     tail: u64,
 	raffle_authority: Pubkey, //32
 	// pub spl_mint: Pubkey,      //32
-	// pub raffle_winner: Pubkey, //32
+	pub raffle_winner: Pubkey, //32
 	// claimed: bool,  //1
 	// pub timestamp: i64, //8
 	// pub reward_mint: Pubkey,   //32
@@ -105,6 +108,7 @@ pub struct RaffleAccount {
 }
 
 #[account(zero_copy)]
+#[derive(Debug)]
 pub struct RaffleAccountData {
 	pub holder: Pubkey,
 }

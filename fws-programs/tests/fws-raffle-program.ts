@@ -42,28 +42,31 @@ describe('fws-raffle-program', () => {
 			signers: [raffleAccount]
         });
 		const _raffleAccount = await program.account.raffleAccount.fetch(raffleAccount.publicKey);
+		console.log(`Head ${_raffleAccount.head}`);
+		console.log(`Tail ${_raffleAccount.tail}`);
 		const holders = _raffleAccount.holders as Array<any>;
 		for(let i=0; i<15; i++){
 			console.log(holders[i])
 		}
     });
-    // it('Draw!', async () => {
-    //     await anchor.Provider.env()
-    //         .connection.confirmTransaction(
-    //             await anchor.Provider.env().connection.requestAirdrop(payer.publicKey, 10000000000),
-    //             'processed'
-    //         )
-    //         .catch((e) => console.log(e));
-    //     try {
-    //         const tx = await program.rpc.draw(buff_holders, {
-    //             accounts: {
-    //                 authority: payer.publicKey,
-    //             },
-    //             signers: [payer],
-    //         });
-    //         console.log('Your transaction signature', tx);
-    //     } catch (e) {
-    //         console.log(`Error ${e}`);
-    //     }
-    // });
+    it('Draw!', async () => {
+        await anchor.Provider.env()
+            .connection.confirmTransaction(
+                await anchor.Provider.env().connection.requestAirdrop(payer.publicKey, 10000000000),
+                'processed'
+            )
+            .catch((e) => console.log(e));
+        try {
+            const tx = await program.rpc.draw({
+                accounts: {
+                    raffleAuthority: payer.publicKey,
+					raffleAccount: raffleAccount.publicKey
+                },
+                signers: [payer],
+            });
+            console.log('Your transaction signature', tx);
+        } catch (e) {
+            console.log(`Error ${e}`);
+        }
+    });
 });
