@@ -1,4 +1,7 @@
+pub mod randomness;
+pub mod recent_blockhashes;
 use anchor_lang::prelude::*;
+use anchor_lang::solana_program::sysvar;
 use anchor_spl::token::{self, CloseAccount, Mint, SetAuthority, Token, TokenAccount, Transfer};
 use std::str;
 use anchor_lang::accounts::loader::Loader;
@@ -12,14 +15,6 @@ pub mod fws_raffle_program {
 		
 		let mut raffle = ctx.accounts.raffle_account.load_init()?;
 		raffle.raffle_authority = ctx.accounts.raffle_authority.key();
-		// raffle.raffle_authority = *ctx.accounts.raffle_authority.key;
-		// raffle.claimed = false;
-		// ctx.accounts.raffle_account.raffle_authority = *ctx.accounts.raffle_authority.key;
-		// ctx.accounts.raffle_account.claimed = false;
-		// let holders : Vec<RaffleAccountData> = vec![];
-		// ctx.accounts.raffle_account.holders = holders;
-		// ctx.accounts.raffle_account.reward_mint = *ctx.accounts.reward_mint.to_account_info().key;
-		// ctx.accounts.raffle_account.reward_authority_bump = ;
 		msg!(
 			"Raffle Account Created: {}", ctx.accounts.raffle_account.key()
 		);
@@ -40,17 +35,16 @@ pub mod fws_raffle_program {
 		let raffle_account = ctx.accounts.raffle_account.load_mut();
 		let mut account = raffle_account.unwrap();
 		let accounts_end = account.head as usize;
-		let mut holders = account.holders.iter_mut();
-		let mut valid_holders : Vec<RaffleAccountData> = Vec::with_capacity(accounts_end);
-		msg!("Valid Holders Len: {}", valid_holders.len());
-		msg!("Account End: {}", accounts_end);
-		for n in 0 .. accounts_end {
-			let holder = *holders.next().unwrap();
-			msg!("Holder: {:?}", n);
-			valid_holders.push(holder);
-		}
-		
-		msg!("Valid Holders: {:?}", valid_holders);
+		let randomness =
+            recent_blockhashes::last_blockhash_accessor(&ctx.accounts.recent_blockhashes)?;
+		let winner_rand = randomness::expand(randomness, accounts_end as u32);
+        let winner_index = winner_rand % accounts_end as u32;
+
+		msg!("Total Raffle entries: {}", accounts_end);
+		msg!("Winner Index: {:?}", winner_index);
+		msg!("Winner: {:?}", account.holders[winner_index as usize]);
+		let winner = account.holders[winner_index as usize];
+		account.raffle_winner = winner.holder;
 		Ok(())
 	}
 	pub fn claim(ctx: Context<Claim>) -> ProgramResult {
@@ -64,10 +58,6 @@ pub struct Create<'info> {
 	raffle_authority: AccountInfo<'info>,
 	#[account(zero)]
 	raffle_account: AccountLoader<'info, RaffleAccount>,
-	// reward_mint: Account<'info, Mint>,
-	// reward_authority: AccountInfo<'info>,
-	// pub system_program: AccountInfo<'info>,
-	// pub rent: Sysvar<'info, Rent>,
 }
 
 #[derive(Accounts)]
@@ -75,6 +65,8 @@ pub struct Draw<'info> {
 	#[account(mut)]
 	raffle_account: AccountLoader<'info, RaffleAccount>,
 	raffle_authority: Signer<'info>,
+	#[account(address = sysvar::recent_blockhashes::ID)]
+    pub recent_blockhashes: UncheckedAccount<'info>,
 }
 
 #[derive(Accounts)]

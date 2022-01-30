@@ -5,3 +5,5 @@ target
 **/*.rs.bk
 node_modules
 tests/holders.json
+tests/raffle_holder_full.json
+tests/raffle_holder_small.json
