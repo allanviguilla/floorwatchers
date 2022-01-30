@@ -27,11 +27,20 @@ export const App: FC = () => {
 
 const Context: FC<{ children: ReactNode }> = ({ children }) => {
 	// The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-	const network = WalletAdapterNetwork.Devnet;
+	const net = process.env.REACT_APP_SOLANA_NETWORK!
+	let network: any;
+	let endpoint: any;
 
-	// You can also provide a custom RPC endpoint.
-	const endpoint = 'http://127.0.0.1:8899';
-	// useMemo(() => clusterApiUrl('network'), [network]);
+	if (net === 'mainnet-beta') {
+		network = WalletAdapterNetwork.Mainnet;
+		endpoint = 'https://ssc-dao.genesysgo.net/';
+	} else if (net === 'devnet') {
+		network = WalletAdapterNetwork.Devnet;
+		endpoint = 'https://psytrbhymqlkfrhudd.dev.genesysgo.net:8899/';
+	}else if (net ===  'localnet'){
+		network = WalletAdapterNetwork.Devnet;
+		endpoint = 'http://127.0.0.1:8899';
+	}
 
 	// @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
 	// Only the wallets you configure here will be compiled into your application, and only the dependencies

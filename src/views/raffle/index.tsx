@@ -1,11 +1,20 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useCallback, useEffect, useState } from "react";
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Paper, Typography } from "@mui/material";
 import { useConnection, useWallet, Wallet } from "@solana/wallet-adapter-react";
 import * as anchor from '@project-serum/anchor';
-const idl = require('../../../fws-programs/target/idl/fws_raffle_program.json');
-import { FwsRaffleProgram } from "../../../fws-programs/target/types/fws_raffle_program";
+// const idl = require('../../../fws-programs/target/idl/fws_raffle_program.json');
+
 import {shortenAddress} from "../../utils/candy-machine";
+let idl: any;
+if(process.env.REACT_APP_SOLANA_NETWORK! === 'localnet'){
+	idl = require('../../utils/fws-raffle-local.json');
+}if((process.env.REACT_APP_SOLANA_NETWORK! === 'devnet')){
+	idl = require('../../utils/fws-raffle-dev.json');
+}else{
+	idl = require('../../utils/fws-raffle.json');
+}
 const suitePic = new URL(
 	'../../assets/images/suite.png',
 	import.meta.url
@@ -39,8 +48,6 @@ export default function Raffle() {
 		for await (const account of raffleAccounts) {
 			try {
 				const _raffleAccount = await program.account.raffleAccount.fetch(account.pubkey);
-				console.log(account.pubkey.toString());
-				console.log(_raffleAccount.pubkey.toString());
 				allAccounts.push(_raffleAccount);
 				// eslint-disable-next-line no-unsafe-optional-chaining
 				setAllRaffles(allRaffles => [...allRaffles?.filter((raffleAccount) => account.pubkey.toString() !== raffleAccount.pubkey.toString()), _raffleAccount]);
