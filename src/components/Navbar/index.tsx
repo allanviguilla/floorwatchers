@@ -36,7 +36,7 @@ function Navbar() {
 						<Typography
 							variant="h6"
 						>
-							FWS Draw
+							Raffle
 						</Typography>
 					</MenuItem>
 					<MenuItem onClick={()=>{navigate('#mint')}}>

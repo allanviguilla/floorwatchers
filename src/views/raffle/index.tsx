@@ -71,7 +71,7 @@ export default function Raffle() {
 		height={'1000px'}
 		sx={{paddingTop: '5%'}}>
 			<Grid item>
-				<Typography variant="h2">FWS Draw</Typography>
+				<Typography variant="h2">FWS Draw - Past Winners</Typography>
 			</Grid>
 
 			{allRaffles ?
