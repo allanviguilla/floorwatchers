@@ -68,6 +68,7 @@ export default function Raffle() {
 	return (
 		<Grid container 
 		justifyContent={'center'}
+		height={'1000px'}
 		sx={{paddingTop: '5%'}}>
 			<Grid item>
 				<Typography variant="h2">FWS Draw</Typography>
@@ -76,7 +77,7 @@ export default function Raffle() {
 			{allRaffles ?
 				(
 					<Grid container 
-					spacing={3}
+					spacing={6}
 					sx={{paddingTop: '5%'}}>
 						{allRaffles.map((raffle, index: number) => (
 							<Grid item key={index}>

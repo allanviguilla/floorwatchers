@@ -24,7 +24,7 @@ describe('fws-raffle-program', () => {
 		const suite = 2;
         try {
             const tx = await program.rpc.create(
-				new anchor.BN(commissioner),
+				new anchor.BN(suite),
 				{
                 accounts: {
                     raffleAuthority: payer.publicKey,

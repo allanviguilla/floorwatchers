@@ -104,7 +104,7 @@ pub struct RaffleAccount {
 	// pub timestamp: i64, //8
 	// pub reward_mint: Pubkey,   //32
 	// pub reward_authority_bump: u8, //8
-	holders: [RaffleAccountData; 10000],
+	holders: [RaffleAccountData; 3333],
 }
 
 #[account(zero_copy)]
