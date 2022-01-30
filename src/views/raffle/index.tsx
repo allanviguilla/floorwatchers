@@ -8,6 +8,7 @@ import * as anchor from '@project-serum/anchor';
 
 import {shortenAddress} from "../../utils/candy-machine";
 let idl: any;
+console.log(process.env.REACT_APP_SOLANA_NETWORK!)
 if(process.env.REACT_APP_SOLANA_NETWORK! === 'localnet'){
 	idl = require('../../utils/fws-raffle-local.json');
 }if((process.env.REACT_APP_SOLANA_NETWORK! === 'devnet')){
