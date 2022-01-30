@@ -19,8 +19,13 @@ describe('fws-raffle-program', () => {
     });
     it('Create!', async () => {
         console.log(raffleAccount.publicKey);
+		const commissioner = 0;
+		const franchise = 1;
+		const suite = 2;
         try {
-            const tx = await program.rpc.create({
+            const tx = await program.rpc.create(
+				new anchor.BN(suite),
+				{
                 accounts: {
                     raffleAuthority: payer.publicKey,
                     raffleAccount: raffleAccount.publicKey,
@@ -33,7 +38,7 @@ describe('fws-raffle-program', () => {
             console.log(e);
         }
         const _raffleAccount = await program.account.raffleAccount.fetch(raffleAccount.publicKey);
-        // console.log(_raffleAccount);
+        console.log(_raffleAccount);
     });
     it('Add Raffle Entry!', async () => {
         for (let k = 0; k < buff_holders.length; k += 25) {

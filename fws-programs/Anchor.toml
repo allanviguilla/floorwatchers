@@ -1,10 +1,10 @@
 [programs.localnet]
 # fws_verify = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
-fws_raffle_program = "7HGqiMfjvBZC8632q2YEePfU2m5BhzTmjkY11wsXyS8q"
+fws_raffle_program = "AUV6acTchdGPST1pexjEMTJ8KehrjQHJoXwiMntdYJ7p"
 
 [programs.devnet]
 # fws_verify = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
-fws_raffle_program = "7HGqiMfjvBZC8632q2YEePfU2m5BhzTmjkY11wsXyS8q"
+fws_raffle_program = "AUV6acTchdGPST1pexjEMTJ8KehrjQHJoXwiMntdYJ7p"
 
 [registry]
 url = "https://anchor.projectserum.com"

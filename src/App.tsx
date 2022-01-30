@@ -15,6 +15,7 @@ import { clusterApiUrl } from '@solana/web3.js';
 import React, { FC, ReactNode, useMemo } from 'react';
 import { AppLayout } from "./components/Layout";
 import Home from "./views/home";
+import Raffle from "./views/raffle";
 
 export const App: FC = () => {
 	return (
@@ -29,7 +30,8 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 	const network = WalletAdapterNetwork.Devnet;
 
 	// You can also provide a custom RPC endpoint.
-	const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+	const endpoint = 'http://127.0.0.1:8899';
+	// useMemo(() => clusterApiUrl('network'), [network]);
 
 	// @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
 	// Only the wallets you configure here will be compiled into your application, and only the dependencies
@@ -55,7 +57,7 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 						<AppLayout>
 							<Routes>
 								<Route path="/" element={<Home />} />
-								{/* <Route path="/login" element={<Login />} /> */}
+								<Route path="/raffle" element={<Raffle />} />
 							</Routes>
 						</AppLayout>
 					</WalletModalProvider>

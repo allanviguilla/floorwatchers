@@ -3,18 +3,23 @@ pub mod recent_blockhashes;
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::sysvar;
 use anchor_spl::token::{self, CloseAccount, Mint, SetAuthority, Token, TokenAccount, Transfer};
-use std::str;
-use anchor_lang::accounts::loader::Loader;
 
-declare_id!("7HGqiMfjvBZC8632q2YEePfU2m5BhzTmjkY11wsXyS8q");
+declare_id!("AUV6acTchdGPST1pexjEMTJ8KehrjQHJoXwiMntdYJ7p");
+
+/// Raffle Types
+/// 0 - Commissioner
+/// 1 - Franchise
+/// 2 - Suite
 
 #[program]
 pub mod fws_raffle_program {
 	use super::*;
-	pub fn create(ctx: Context<Create>) -> ProgramResult {
+	pub fn create(ctx: Context<Create>, raffle_type: u64) -> ProgramResult {
 		
 		let mut raffle = ctx.accounts.raffle_account.load_init()?;
+		raffle.pubkey = ctx.accounts.raffle_account.key();
 		raffle.raffle_authority = ctx.accounts.raffle_authority.key();
+		raffle.raffle_type = raffle_type;
 		msg!(
 			"Raffle Account Created: {}", ctx.accounts.raffle_account.key()
 		);
@@ -53,6 +58,7 @@ pub mod fws_raffle_program {
 }
 
 #[derive(Accounts)]
+#[instruction(raffle_type: u64)]
 pub struct Create<'info> {
 	#[account(mut, signer)]
 	raffle_authority: AccountInfo<'info>,
@@ -89,7 +95,9 @@ pub struct AddRaffleEntry<'info> {
 pub struct RaffleAccount {
 	head: u64,
     tail: u64,
-	raffle_authority: Pubkey, //32
+	pub pubkey: Pubkey,
+	pub raffle_type: u64,
+	pub raffle_authority: Pubkey, //32
 	// pub spl_mint: Pubkey,      //32
 	pub raffle_winner: Pubkey, //32
 	// claimed: bool,  //1

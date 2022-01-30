@@ -9,9 +9,14 @@ import {
   } from "@solana/wallet-adapter-react-ui";
   import { useWallet } from "@solana/wallet-adapter-react";
 import {shortenAddress} from "../../utils/candy-machine";
+import {useNavigate} from "react-router-dom";
 
 function Navbar() {
 	const wallet = useWallet();
+	const navigate = useNavigate();
+	// const navigateTo  = (location: string) => {
+	// 	history.push(location);
+	// };
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" className={'navbar-bg'}>
@@ -27,15 +32,21 @@ function Navbar() {
 						Home
 						</Link>
 					</Typography>
-					
-					<MenuItem>
+					<MenuItem onClick={()=>{navigate('/raffle')}}>
+						<Typography
+							variant="h6"
+						>
+							FWS Draw
+						</Typography>
+					</MenuItem>
+					<MenuItem onClick={()=>{navigate('#mint')}}>
 						<Typography
 							variant="h6"
 						>
 							Mint
 						</Typography>
 					</MenuItem>
-					<MenuItem>
+					<MenuItem onClick={()=>{navigate('#utilities')}}>
 						<Typography
 							variant="h6"
 						>

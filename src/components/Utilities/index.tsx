@@ -5,6 +5,7 @@ import { Grid} from "@mui/material";
 export default function Utilities(){
 	return(
 		<Grid
+			id="utilities"
 			container
 			justifyContent={'center'}
 			alignContent={'center'}

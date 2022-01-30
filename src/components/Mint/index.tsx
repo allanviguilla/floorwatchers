@@ -5,6 +5,7 @@ import { Button, Grid } from "@mui/material";
 export default function Mint() {
 	return (
 		<Grid
+			id="mint"
 			container
 			justifyContent={'center'}
 			alignContent={'center'}
