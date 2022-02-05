@@ -28,7 +28,7 @@ function Navbar() {
 						sx={{ flexGrow: 1 }}
 						className="logo-container"
 					>
-						<Link href="/" sx={{color:'white'}}>
+						<Link onClick={()=>{navigate('/')}} sx={{color:'white'}}>
 						Home
 						</Link>
 					</Typography>

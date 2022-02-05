@@ -6,14 +6,14 @@ import { useConnection, useWallet, Wallet } from "@solana/wallet-adapter-react";
 import * as anchor from '@project-serum/anchor';
 // const idl = require('../../../fws-programs/target/idl/fws_raffle_program.json');
 
-import {shortenAddress} from "../../utils/candy-machine";
+import { shortenAddress } from "../../utils/candy-machine";
 let idl: any;
 console.log(process.env.REACT_APP_SOLANA_NETWORK!)
-if(process.env.REACT_APP_SOLANA_NETWORK! === 'localnet'){
+if (process.env.REACT_APP_SOLANA_NETWORK! === 'localnet') {
 	idl = require('../../utils/fws-raffle-local.json');
-}if((process.env.REACT_APP_SOLANA_NETWORK! === 'devnet')){
+} if ((process.env.REACT_APP_SOLANA_NETWORK! === 'devnet')) {
 	idl = require('../../utils/fws-raffle-dev.json');
-}else{
+} else {
 	idl = require('../../utils/fws-raffle.json');
 }
 const suitePic = new URL(
@@ -27,7 +27,7 @@ const commissionerPic = new URL(
 const franchisePic = new URL(
 	'../../assets/images/franchise.png',
 	import.meta.url
-  );
+);
 const opts = {
 	preflightCommitment: "processed"
 };
@@ -66,47 +66,47 @@ export default function Raffle() {
 		})()
 	}, []);
 	return (
-		<Grid container 
-		justifyContent={'center'}
-		height={'1000px'}
-		sx={{paddingTop: '5%'}}>
+		<Grid container
+			justifyContent={'center'}
+			height={'1000px'}
+			sx={{ paddingTop: '5%' }}>
 			<Grid item>
 				<Typography variant="h2">FWS Draw - Past Winners</Typography>
 			</Grid>
 
 			{allRaffles ?
 				(
-					<Grid container 
-					spacing={6}
-					sx={{paddingTop: '5%'}}>
+					<Grid container
+						spacing={6}
+						sx={{ paddingTop: '5%' }}>
 						{allRaffles.map((raffle, index: number) => (
 							<Grid item key={index}>
 								<Paper elevation={3}>
 									<Card sx={{ maxWidth: 345 }}>
 										{raffle.raffleType == 0 ? (
 											<CardMedia
-											component="img"
-											height="140"
-											width="140"
-											image={commissionerPic.href}
-											alt="Commissioner"
-										/>
-										) : raffle.raffleType == 1? (
+												component="img"
+												height="140"
+												width="140"
+												image={commissionerPic.href}
+												alt="Commissioner"
+											/>
+										) : raffle.raffleType == 1 ? (
 											<CardMedia
-											component="img"
-											height="140"
-											image={franchisePic.href}
-											alt="Franchise"
-										/>
-										) : raffle.raffleType == 2? (
+												component="img"
+												height="140"
+												image={franchisePic.href}
+												alt="Franchise"
+											/>
+										) : raffle.raffleType == 2 ? (
 											<CardMedia
-											component="img"
-											height="140"
-											image={suitePic.href}
-											alt="Suite"
-										/>
+												component="img"
+												height="140"
+												image={suitePic.href}
+												alt="Suite"
+											/>
 										) : 'None'}
-										
+
 										<CardContent>
 											<Typography gutterBottom variant="h5" component="div">
 												Draw: {shortenAddress(raffle.pubkey.toString())}
@@ -114,8 +114,8 @@ export default function Raffle() {
 											<Typography variant="body2" color="text.secondary">Entries: {raffle.head.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</Typography>
 											<Typography variant="body2" color="text.secondary">Winner: {shortenAddress(raffle.raffleWinner.toString())}</Typography>
 											<Typography variant="body2" color="text.secondary">Package: {
-											
-											raffle.raffleType == 0? "Commissioner" : raffle.raffleType == 1? "Franchise" : raffle.raffleType == 2? "Suite" : "No package"
+
+												raffle.raffleType == 0 ? "Commissioner" : raffle.raffleType == 1 ? "Franchise" : raffle.raffleType == 2 ? "Suite" : "No package"
 											}</Typography>
 										</CardContent>
 										<CardActions>
