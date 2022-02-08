@@ -11,7 +11,7 @@ import {
 import {shortenAddress} from "../../utils/candy-machine";
 import {useNavigate} from "react-router-dom";
 
-function Navbar() {
+export const Navbar = () => {
 	const wallet = useWallet();
 	const navigate = useNavigate();
 	// const navigateTo  = (location: string) => {

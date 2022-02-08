@@ -2,9 +2,11 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
-var indexRouter = require('./routes/index');
+var verifyRouter = require('./routes/verify');
+require("dotenv").config();
 
 var app = express();
 
@@ -16,13 +18,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon('../src/assets/logo.ico'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+app.use(express.static(path.join(__dirname, "..", "build")));
+// app.use(favicon(path.join(__dirname, 'public/images/logo.ico')));
 
-app.use('/', indexRouter);
-// app.get('*', (req,res) =>{
-// 	res.sendFile(path.join(__dirname+'/client/build/index.html'));
-//   });
+app.use('/api', verifyRouter);
+
+app.use((req, res, next) => {
+	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+  });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
