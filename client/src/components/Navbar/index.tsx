@@ -30,7 +30,7 @@ export const Navbar = () => {
 					{!wallet.connected? (
 						<WalletMultiButton></WalletMultiButton>
 					):(
-						<WalletDisconnectButton>{wallet.publicKey ? wallet.publicKey?.toString().slice(0,5) : <p>Disconnect</p>}</WalletDisconnectButton>
+						<WalletDisconnectButton>{wallet.publicKey ? wallet.publicKey?.toString().slice(0,8) : <p>Disconnect</p>}</WalletDisconnectButton>
 					)}
 				</Toolbar>
 			</AppBar>
