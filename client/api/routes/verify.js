@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-// const bent = require('bent');
-// const post = bent('https://discord.com', 'POST');
+var nacl = require('tweetnacl');
+// const nacl = (...args) => import('tweetnacl').then(({default:nacl}) => nacl(...args));
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 // const getJson = bent('json');
 const { clientId, guildId, token, clientSecret } = require('../static');
@@ -13,8 +13,6 @@ const client = new Client({
 
 router.post('/verify', async function (req, res, next) {
     let code = req.body.code;
-    console.log(clientId);
-    console.log(clientSecret);
     if (code) {
         try {
             const oauthResult = await fetch('https://discord.com/api/oauth2/token', {
@@ -46,6 +44,24 @@ router.post('/verify', async function (req, res, next) {
         }
     }
     // res.json({"message":"ok"});
+});
+
+router.post('/register', async function (req, res, next){
+	const user = req.body.userObj;
+	
+	const msgBytes = new Uint8Array(req.body.msgBytes.data);
+	const msgSig = new Uint8Array(req.body.msgSig.data);
+	const address = new Uint8Array(req.body.address.data);
+
+	const verified = nacl.sign.detached.verify(msgBytes, msgSig, address);
+	if(verified){
+		//now you can add this user to the database.
+		res.status(200).json({status:'success'});
+	}else{
+		res.status(400).json({status:'Signature verification failed'})
+	}
+
+	
 });
 
 module.exports = router;
