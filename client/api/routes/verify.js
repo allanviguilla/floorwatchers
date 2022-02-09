@@ -39,11 +39,10 @@ router.post('/verify', async function (req, res, next) {
                 },
             });
 			const user = await userResult.json();
-			res.json(user);
+			res.json({user:user, oauthData: oauthData});
         } catch (error) {
-            // NOTE: An unauthorized token will not throw an error;
-            // it will return a 401 Unauthorized response in the try block above
             console.error(error);
+			res.status(400).json({user:user, oauthData: oauthData});
         }
     }
     // res.json({"message":"ok"});
