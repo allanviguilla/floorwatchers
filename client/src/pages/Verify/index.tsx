@@ -34,7 +34,7 @@ export default function Verify() {
 	const { publicKey } = useWallet();
 	const wallet = useWallet();
 	const { connection } = useConnection();
-
+	const [verificationStatus, setVerificationStatus] = useState(false);
 	const [user, setUser] = useState<DiscordUser>();
 	const [open, setOpen] = useState(false);
 	// const access_token = new URLSearchParams(location.hash).get('access_token');
@@ -67,10 +67,7 @@ export default function Verify() {
 			user,
 			publicKey: publicKey?.toString()
 		};
-		console.log(msgBytes);
-		console.log(msgSig);
 		const address = publicKey?.toBytes();
-		console.log(address);
 		const data = { userObj, msgSig, msgBytes, address };
 		axios({
 			method: 'post',
@@ -78,6 +75,9 @@ export default function Verify() {
 			data: data
 		}).then(res => {
 			console.log(res);
+			setVerificationStatus(true);
+		}).catch(err => {
+			console.log(err);
 		})
 	}
 	useEffect(() => {
@@ -142,19 +142,36 @@ export default function Verify() {
 							sx={{ width: 150, height: 150 }}
 						/>
 					</Grid>
-					<Typography align="center" variant={"h5"}>{user.username + '#' + user.discriminator}</Typography>
+					<Typography align="center" variant={"h5"} sx={{paddingTop: 3}}>{user.username + '#' + user.discriminator}</Typography>
 				</Grid>
 			) : (
 				''
 			)}
-			<Grid item xs={12} textAlign="center" sx={{ marginTop: 2, marginBottom: 5 }}>
-				<Button
-					variant="contained"
-					size="large"
-					onClick={signMessage}>
-					Verify
-				</Button>
-			</Grid>
+			{verificationStatus ? (
+				<Grid item xs={12} textAlign="center" sx={{ marginTop: 2, marginBottom: 5 }}>
+					<Grid container>
+						<Grid item xs={12}>
+							<Typography variant={"h5"}>Your wallet has been linked</Typography>
+						</Grid>
+						<Grid item xs={12}>
+							<Button 
+							variant="contained"
+							size="large">Back to Discord</Button>
+						</Grid>
+					</Grid>
+					
+				</Grid>
+			) : (
+				<Grid item xs={12} textAlign="center" sx={{ marginTop: 2, marginBottom: 5 }}>
+					<Button
+						variant="contained"
+						size="large"
+						onClick={signMessage}>
+						Verify
+					</Button>
+				</Grid>
+			)}
+
 		</Grid>
 	);
 }
