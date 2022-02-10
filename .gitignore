@@ -6,3 +6,4 @@ src/.DS_Store
 nfts/
 .DS_Store
 client/api/.env
+client/api/data/

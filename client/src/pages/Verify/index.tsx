@@ -35,6 +35,7 @@ export default function Verify() {
 	const wallet = useWallet();
 	const { connection } = useConnection();
 	const [verificationStatus, setVerificationStatus] = useState(false);
+	const [isValidHolder, setIsValidHolder] = useState(false);
 	const [user, setUser] = useState<DiscordUser>();
 	const [open, setOpen] = useState(false);
 	// const access_token = new URLSearchParams(location.hash).get('access_token');
@@ -47,6 +48,26 @@ export default function Verify() {
 	const handleOpen = () => {
 		setOpen(true);
 	};
+	const holderCheck = async (): Promise<any> => {
+		if (!publicKey) {
+			return
+		}
+		let data;
+		try {
+			await axios({
+				url: 'api/holder-check',
+				method: 'POST',
+				data: { publicKey: publicKey.toString() }
+			})
+				.then(res => {
+					data = res.data;
+				})
+		} catch (e) {
+			console.log(e);
+			return e;
+		}
+		return data;
+	}
 	const signMessage = async () => {
 		if (!publicKey || !user) {
 			return
@@ -80,6 +101,16 @@ export default function Verify() {
 			console.log(err);
 		})
 	}
+	useEffect(() => {
+		if (publicKey) {
+			(async () => {
+				const validHolder = await holderCheck();
+				console.log(validHolder);
+				setIsValidHolder(validHolder.verified as boolean);
+			})()
+
+		}
+	}, [publicKey])
 	useEffect(() => {
 		// console.log(code);
 		if (code) {
@@ -142,7 +173,7 @@ export default function Verify() {
 							sx={{ width: 150, height: 150 }}
 						/>
 					</Grid>
-					<Typography align="center" variant={"h5"} sx={{paddingTop: 3}}>{user.username + '#' + user.discriminator}</Typography>
+					<Typography align="center" variant={"h5"} sx={{ paddingTop: 3 }}>{user.username + '#' + user.discriminator}</Typography>
 				</Grid>
 			) : (
 				''
@@ -154,20 +185,32 @@ export default function Verify() {
 							<Typography variant={"h5"}>Your wallet has been linked</Typography>
 						</Grid>
 						<Grid item xs={12}>
-							<Button 
-							variant="contained"
-							size="large">Back to Discord</Button>
+							<Button
+								variant="contained"
+								size="large">Back to Discord</Button>
 						</Grid>
 					</Grid>
-					
+
 				</Grid>
 			) : (
 				<Grid item xs={12} textAlign="center" sx={{ marginTop: 2, marginBottom: 5 }}>
+					{!isValidHolder ? (
+						<Grid container justifyContent={'center'} sx={{marginBottom:2}}>
+							<Grid item xs={5}>
+								<Alert
+									severity='warning'>
+									You must have a valid NFT in your wallet to link your Discord.
+								</Alert>
+							</Grid>
+						</Grid>
+
+					) : ('')}
 					<Button
+						disabled={!isValidHolder}
 						variant="contained"
 						size="large"
 						onClick={signMessage}>
-						Verify
+						Link Discord
 					</Button>
 				</Grid>
 			)}
