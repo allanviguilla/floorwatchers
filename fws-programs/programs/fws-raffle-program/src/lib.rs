@@ -52,9 +52,6 @@ pub mod fws_raffle_program {
 		account.raffle_winner = winner.holder;
 		Ok(())
 	}
-	pub fn claim(ctx: Context<Claim>) -> ProgramResult {
-		Ok(())
-	}
 }
 
 #[derive(Accounts)]
@@ -75,13 +72,13 @@ pub struct Draw<'info> {
     pub recent_blockhashes: UncheckedAccount<'info>,
 }
 
-#[derive(Accounts)]
-pub struct Claim<'info> {
-	#[account(signer,
-	constraint = raffle_account.to_account_info().key == authority.key )]
-	authority: AccountInfo<'info>, //winner of the raffle
-	raffle_account: AccountLoader<'info, RaffleAccount>,
-}
+// #[derive(Accounts)]
+// pub struct Claim<'info> {
+// 	#[account(signer,
+// 	constraint = raffle_account.to_account_info().key == authority.key )]
+// 	authority: AccountInfo<'info>, //winner of the raffle
+// 	raffle_account: AccountLoader<'info, RaffleAccount>,
+// }
 
 #[derive(Accounts)]
 #[instruction(holders: Vec<Pubkey>)]
