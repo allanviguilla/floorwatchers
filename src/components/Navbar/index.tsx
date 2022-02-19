@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Grid, Box, MenuItem, Link } from "@mui/material";
+import { Grid, Box, MenuItem, Link, IconButton } from "@mui/material";
 import { styled } from '@mui/styles';
 import {
 	WalletMultiButton,
@@ -11,7 +11,9 @@ import {
 import { useWallet } from "@solana/wallet-adapter-react";
 import { shortenAddress } from "../../utils/candy-machine";
 import { useNavigate } from "react-router-dom";
-import { lineHeight } from "@mui/system";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
+
 const logo = new URL(
 	'../../assets/LOGO.png',
 	import.meta.url
@@ -20,14 +22,17 @@ const logo = new URL(
 const FWSNav = styled(AppBar)({
 	color: 'white',
 	background: 'linear-gradient(162.2deg, #291381 23%, #5607D6 122.71%)',
-	// transform: 'rotate(-180deg)'
 });
 const FWSWalletBtn = styled(WalletMultiButton)({
 	background: '#01FFA3',
 	color: '#291381',
 	borderRadius: '100px',
-	width: '200px'
-	// transform: 'rotate(-180deg)'
+	width: '220px'
+});
+const SocialBtn = styled(IconButton)({
+	background: '#39EB9B',
+	borderRadius: '50%',
+	color:'white',
 });
 export const Navbar = () => {
 	const wallet = useWallet();
@@ -74,8 +79,13 @@ export const Navbar = () => {
 								</Typography>
 							</MenuItem>
 						</Grid>
-
 					</Grid>
+					<SocialBtn size="small" sx={{marginRight:'5px'}}>
+						<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
+					</SocialBtn>
+					<SocialBtn size="small" sx={{marginRight:'5px'}}>
+					<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
+					</SocialBtn>
 					{!wallet.connected ? (
 						<FWSWalletBtn>Connect Wallet</FWSWalletBtn>
 					) : (
