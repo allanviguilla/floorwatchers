@@ -70,7 +70,7 @@ export default function Hero() {
 				{
 				xsMatch ? (
 					//@ts-ignore
-					<img src={SIL.href} style={xsStyles}></img>
+					''
 				) : smMatch ? (
 					//@ts-ignore
 					<img src={SIL.href} style={smStyles}></img>
@@ -84,7 +84,7 @@ export default function Hero() {
 				('')
 				}
 			</Grid>
-			<Grid item xs={9} sm={6} md={7} lg={7}>
+			<Grid item xs={12} sm={6} md={7} lg={7}>
 				<Grid container>
 					<Grid item xs={12}>
 						<Typography

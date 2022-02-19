@@ -32,12 +32,9 @@ export default function Floor() {
 			spacing={'column'}
 			marginTop={'100px'}
 		>
-			{/* <Grid item xs={12} sx={{ marginBottom: '50px' }}>
-				<PlaybookTitle variant="h2" align="center">Season 1 Playbook</PlaybookTitle>
-			</Grid> */}
-			<Grid container sx={{ marginBottom: '30px' }}>
-				<Grid item xs={6}>
-					<Paper elevation={6} sx={{ padding: '20px',width: '426px', borderRadius: '20px' }}>
+			<Grid container sx={{ marginBottom: '30px' }} spacing={'40'}>
+				<Grid item xs={12} sm={6}>
+					<Paper elevation={6} sx={{ padding: '20px', borderRadius: '20px' }}>
 						<Grid
 							container
 							direction="row"
@@ -50,7 +47,7 @@ export default function Floor() {
 						</Grid>
 					</Paper>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Grid
 						container
 						direction="row"
@@ -64,9 +61,9 @@ export default function Floor() {
 					
 				</Grid>
 			</Grid>
-			<Typography>
-				<img src={separator.href}></img>
-			</Typography>
+			<Grid item xs={12}>
+				<hr></hr>
+			</Grid>
 		</Grid>
 	)
 }

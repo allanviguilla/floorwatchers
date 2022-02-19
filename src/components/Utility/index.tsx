@@ -33,13 +33,13 @@ export default function Utility() {
 			container
 			justifyContent={'center'}
 			alignContent={'center'}
-			spacing={'column'}
+			spacing={'40'}
 			marginTop={'50px'}
 		>
 			<Grid item xs={12} sm={6}>
 				<Grid container>
 					<Grid item xs={12} sx={{ marginBottom: '40px' }}>
-						<Paper elevation={6} sx={{ padding: '20px', width: '426px', borderRadius:'20px' }}>
+						<Paper elevation={6} sx={{ padding: '5px',borderRadius:'20px' }}>
 						<Grid
 							container
 							direction="row"
@@ -62,7 +62,7 @@ export default function Utility() {
 			<Grid item xs={12} sm={6} sx={{marginBottom:'30px'}}>
 				<Grid container>
 					<Grid item xs={12} sx={{ marginBottom: '40px' }}>
-						<Paper elevation={6} sx={{ padding: '20px', width: '450px', borderRadius:'20px' }}>
+						<Paper elevation={6} sx={{ padding: '5px', borderRadius:'20px' }}>
 						<Grid
 							container
 							direction="row"
@@ -82,9 +82,9 @@ export default function Utility() {
 					</Grid>
 				</Grid>
 			</Grid>
-			<Typography>
-				<img src={separator.href}></img>
-			</Typography>
+			<Grid item xs={12}>
+				<hr></hr>
+			</Grid>
 		</Grid>
 	)
 }
