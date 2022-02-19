@@ -39,7 +39,7 @@ const mdStyles = {
 const lgStyles = {
 	position: 'absolute',
 	left: '10px',
-	top: '75px',
+	top: '74px',
 	maxWidth: '500px',
 	maxHeight: '100%',
 }
