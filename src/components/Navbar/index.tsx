@@ -1,8 +1,9 @@
-import React, { useLayoutEffect } from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Grid, Box, MenuItem, Link, IconButton } from "@mui/material";
+import { Grid, Box, MenuItem, Link, IconButton, Container, Menu, Button, Tooltip, Avatar } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/styles';
 import {
 	WalletMultiButton,
@@ -26,80 +27,226 @@ const FWSNav = styled(AppBar)({
 	background: 'linear-gradient(162.2deg, #291381 23%, #5607D6 122.71%)',
 	marginBottom: '-650px',
 	paddingBottom: '650px',
-	paddingLeft: '10px',
+	paddingLeft: '20px',
+	paddingRight: '20px',
 	marginRIght: '10px'
 });
 const FWSWalletBtn = styled(WalletMultiButton)({
 	background: '#01FFA3',
 	color: '#291381',
 	borderRadius: '100px',
-	width: '220px'
+	lineHeight: '50px'
+	// width: '220px'
 });
 const SocialBtn = styled(IconButton)({
-	background: '#39EB9B',
-	borderRadius: '50%',
-	color:'white',
+	backgroundColor: '#39EB9B !important',
+	borderRadius: '100px !important',
+	color: 'white !important',
+	height: '40px',
+	width: '40px',
+	linHeight: '50px; !important'
 });
 export const Navbar = () => {
 	const wallet = useWallet();
 	const navigate = useNavigate();
+
+	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+	const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorElNav(event.currentTarget);
+	};
+	const handleCloseNavMenu = () => {
+		setAnchorElNav(null);
+	};
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<FWSNav position="static" color="transparent" elevation={0}>
-				<Toolbar>
+		<Box>
+			<FWSNav position="static">
+				<Toolbar disableGutters>
 					<Typography
 						variant="h6"
-						component="div"
-						sx={{ flexGrow: 1 }}
+						noWrap
 						className="logo-container"
+						component="div"
+						sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
 					>
 						<Link onClick={() => { navigate('/') }}>
 							<img src={logo.href} width="120" height="75" style={{ marginTop: '10px' }} />
 						</Link>
 					</Typography>
-					<Grid container justifyContent="center">
-						<Grid item>
-							<MenuItem onClick={() => { navigate('/#mint') }}>
-								<Typography
-									variant="h6"
-								>
-									Playbook
-								</Typography>
+
+					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+						<IconButton
+							size="large"
+							aria-label="account of current user"
+							aria-controls="menu-appbar"
+							aria-haspopup="true"
+							onClick={handleOpenNavMenu}
+							color="inherit"
+						>
+							<MenuIcon />
+						</IconButton>
+						<Menu
+							id="menu-appbar"
+							anchorEl={anchorElNav}
+							anchorOrigin={{
+								vertical: 'bottom',
+								horizontal: 'left',
+							}}
+							keepMounted
+							transformOrigin={{
+								vertical: 'top',
+								horizontal: 'left',
+							}}
+							open={Boolean(anchorElNav)}
+							onClose={handleCloseNavMenu}
+							sx={{
+								display: { xs: 'block', md: 'none' },
+							}}
+						>
+							<MenuItem onClick={handleCloseNavMenu}>
+								<Typography textAlign="center">Playbook</Typography>
 							</MenuItem>
-						</Grid>
-						<Grid item>
-							<MenuItem onClick={() => { navigate('/#utilities') }}>
-								<Typography
-									variant="h6"
-								>
-									Team
-								</Typography>
+							<MenuItem onClick={handleCloseNavMenu}>
+								<Typography textAlign="center">Team</Typography>
 							</MenuItem>
-						</Grid>
-						<Grid item>
-							<MenuItem>
-								<Typography
-									variant="h6"
-								>
-									FAQ
-								</Typography>
+							<MenuItem onClick={handleCloseNavMenu}>
+								<Typography textAlign="center">FAQ</Typography>
 							</MenuItem>
+						</Menu>
+					</Box>
+					<Typography
+						variant="h6"
+						noWrap
+						component="div"
+						sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+					>
+						<Link onClick={() => { navigate('/') }}>
+							<img src={logo.href} width="120" height="75" style={{ marginTop: '10px' }} />
+						</Link>
+					</Typography>
+					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+						<Grid container justifyContent="center">
+							<Grid item>
+								<MenuItem onClick={() => { navigate('/#mint') }}>
+									<Typography
+										variant="h6"
+									>
+										Playbook
+									</Typography>
+								</MenuItem>
+							</Grid>
+							<Grid item>
+								<MenuItem onClick={() => { navigate('/#utilities') }}>
+									<Typography
+										variant="h6"
+									>
+										Team
+									</Typography>
+								</MenuItem>
+							</Grid>
+							<Grid item>
+								<MenuItem>
+									<Typography
+										variant="h6"
+									>
+										FAQ
+									</Typography>
+								</MenuItem>
+							</Grid>
 						</Grid>
-					</Grid>
-					<SocialBtn size="small" sx={{marginRight:'15px'}} onClick={() => { navigate('https://discord.gg/yfw7dju66s') }}>
-						<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
-					</SocialBtn>
-					<SocialBtn size="small" sx={{marginRight:'15px'}} onClick={() => { navigate('https://twitter.com/FloorWatchers') }}>
-					<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
-					</SocialBtn>
-					{!wallet.connected ? (
-						<FWSWalletBtn>Connect Wallet</FWSWalletBtn>
-					) : (
-						<WalletDisconnectButton>{wallet.publicKey ? shortenAddress(wallet.publicKey?.toString()) : <p>Disconnect</p>}</WalletDisconnectButton>
-					)}
+						{/* <Button
+							onClick={handleCloseNavMenu}
+							sx={{ my: 2, color: 'white', display: 'block' }}
+						>
+							Test2
+						</Button> */}
+					</Box>
+					<Box sx={{ flexGrow: 0 }}>
+						<Grid container>
+							<Grid item sx={{display: { xs: 'none', md: 'flex' } }}>
+								<a href="https://discord.gg/yfw7dju66s">
+									<SocialBtn size="small" sx={{ marginRight: '15px' }}>
+										<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
+									</SocialBtn>
+								</a>
+							</Grid>
+							<Grid item sx={{display: { xs: 'none', md: 'flex' } }}>
+								<a href="https://twitter.com/FloorWatchers">
+									<SocialBtn size="small" sx={{ marginRight: '15px' }}>
+										<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
+									</SocialBtn>
+								</a>
+							</Grid>
+
+
+							{!wallet.connected ? (
+								<FWSWalletBtn>Connect Wallet</FWSWalletBtn>
+							) : (
+								<WalletDisconnectButton>{wallet.publicKey ? shortenAddress(wallet.publicKey?.toString()) : <p>Disconnect</p>}</WalletDisconnectButton>
+							)}
+						</Grid>
+					</Box>
 				</Toolbar>
 			</FWSNav>
-		</Box >
+		</Box>
+
+		// <Box sx={{ flexGrow: 1 }}>
+		// 	<FWSNav position="static" color="transparent" elevation={0}>
+		// 		<Toolbar>
+		// 			<Typography
+		// 				variant="h6"
+		// 				component="div"
+		// 				sx={{ flexGrow: 1 }}
+		// 				className="logo-container"
+		// 			>
+		// 				<Link onClick={() => { navigate('/') }}>
+		// 					<img src={logo.href} width="120" height="75" style={{ marginTop: '10px' }} />
+		// 				</Link>
+		// 			</Typography>
+		// <Grid container justifyContent="center">
+		// 	<Grid item>
+		// 		<MenuItem onClick={() => { navigate('/#mint') }}>
+		// 			<Typography
+		// 				variant="h6"
+		// 			>
+		// 				Playbook
+		// 			</Typography>
+		// 		</MenuItem>
+		// 	</Grid>
+		// 	<Grid item>
+		// 		<MenuItem onClick={() => { navigate('/#utilities') }}>
+		// 			<Typography
+		// 				variant="h6"
+		// 			>
+		// 				Team
+		// 			</Typography>
+		// 		</MenuItem>
+		// 	</Grid>
+		// 	<Grid item>
+		// 		<MenuItem>
+		// 			<Typography
+		// 				variant="h6"
+		// 			>
+		// 				FAQ
+		// 			</Typography>
+		// 		</MenuItem>
+		// 	</Grid>
+		// </Grid>
+		// <SocialBtn size="small" sx={{marginRight:'15px'}} onClick={() => { navigate('https://discord.gg/yfw7dju66s') }}>
+		// 	<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
+		// </SocialBtn>
+		// <SocialBtn size="small" sx={{marginRight:'15px'}} onClick={() => { navigate('https://twitter.com/FloorWatchers') }}>
+		// <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
+		// </SocialBtn>
+		// {!wallet.connected ? (
+		// 	<FWSWalletBtn>Connect Wallet</FWSWalletBtn>
+		// ) : (
+		// 	<WalletDisconnectButton>{wallet.publicKey ? shortenAddress(wallet.publicKey?.toString()) : <p>Disconnect</p>}</WalletDisconnectButton>
+		// )}
+		// 		</Toolbar>
+		// 	</FWSNav>
+		// </Box >
 	);
 }
 export default Navbar;

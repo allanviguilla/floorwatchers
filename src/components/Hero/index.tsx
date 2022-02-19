@@ -1,22 +1,47 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import { Grid, Button } from "@mui/material";
-import { styled } from '@mui/styles';
+import { Grid, Button, useMediaQuery, Box } from "@mui/material";
+import { styled, useTheme } from '@mui/styles';
 //@ts-ignore
 import * as classes from "./hero.module.css";
 const HeroGrid = styled(Grid)({
 	color: 'white'
 });
-const SIL3 = new URL(
-	'../../assets/SIL_3.png',
+const SIL = new URL(
+	'../../assets/silhouette.png',
 	import.meta.url
 );
-const styles = {
+const SILSVG = new URL(
+	'../../assets/SIL_3.svg',
+	import.meta.url
+);
+const xsStyles = {
+	position: 'absolute',
+	left: '5px',
+	top: '476px',
+	maxWidth: '200px',
+	maxHeight: '100%',
+}
+const smStyles = {
 	position: 'absolute',
 	left: '10px',
-	top: '95px',
-	width: '500px',
-	height: '650px',
+	top: '208px',
+	maxWidth: '400px',
+	maxHeight: '100%',
+}
+const mdStyles = {
+	position: 'absolute',
+	left: '10px',
+	top: '75px',
+	maxWidth: '500px',
+	maxHeight: '100%',
+}
+const lgStyles = {
+	position: 'absolute',
+	left: '10px',
+	top: '75px',
+	maxWidth: '500px',
+	maxHeight: '100%',
 }
 const JoinBtn = styled(Button)({
 	background: '#01FFA3',
@@ -24,27 +49,45 @@ const JoinBtn = styled(Button)({
 	borderRadius: '50px',
 	fontWeight: '800',
 	fontStyle: 'normal',
-	padding: '15px'
+	padding: '20px'
 });
 export default function Hero() {
+	const xsMatch = useMediaQuery('(max-width:599px)');
+	const smMatch = useMediaQuery('(max-width:899px)');
+	const mdMatch = useMediaQuery('(max-width:1199px)');
+	const lgMatch = useMediaQuery('(min-width:1200px)');
+	
+	console.log(smMatch)
 	return (
 		<HeroGrid
 			container
 			direction="row"
-			justifyContent='center'
 			alignItems='center'
-			style={{ minHeight: '50vh' }}
-		// alignContent={'center'}
-		// spacing={'column'}
-		// sx={{ paddingTop: '125px' }}
-
+			style={{ minHeight: '600px' }}
 		>
-			<Grid item sm={2} md={4} lg={3}>
-				{//@ts-ignore
-					<img src={SIL3.href} style={styles}></img>
+			<Grid item xs={3} sm={6} md={5} lg={4}>
+				{/* <Box sx={{height:1, width:1}} style={mdStyles}>
+					<img src={SIL.href} width="auto" height="auto"></img>
+				</Box> */}
+
+				{
+				xsMatch ? (
+					//@ts-ignore
+					<img src={SIL.href} style={xsStyles}></img>
+				) : smMatch ? (
+					//@ts-ignore
+					<img src={SIL.href} style={smStyles}></img>
+				) : mdMatch ? (
+					//@ts-ignore
+					<img src={SIL.href} style={mdStyles}></img>
+				) : lgMatch ? (
+					//@ts-ignore
+					<img src={SIL.href} style={lgStyles}></img>
+				) :
+				('')
 				}
 			</Grid>
-			<Grid item sm={7} md={8} lg={9}>
+			<Grid item xs={9} sm={6} md={7} lg={7}>
 				<Grid container>
 					<Grid item xs={12}>
 						<Typography
@@ -67,7 +110,7 @@ export default function Hero() {
 						</Typography>
 					</Grid>
 					<Grid item xs={12} sx={{ marginTop: '20px' }}>
-						<JoinBtn size="large">
+						<JoinBtn size="large" variant='contained'>
 							Join Floor Watchers Society Discord
 						</JoinBtn>
 					</Grid>
