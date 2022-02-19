@@ -66,9 +66,6 @@ export default function Hero() {
 			style={{ minHeight: '600px' }}
 		>
 			<Grid item xs={3} sm={6} md={5} lg={4}>
-				{/* <Box sx={{height:1, width:1}} style={mdStyles}>
-					<img src={SIL.href} width="auto" height="auto"></img>
-				</Box> */}
 
 				{
 				xsMatch ? (
