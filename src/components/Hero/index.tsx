@@ -1,38 +1,79 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import { styled } from '@mui/styles';
-
+//@ts-ignore
+import * as classes from "./hero.module.css";
 const HeroGrid = styled(Grid)({
-	// background: 'linear-gradient(162.2deg, #291381 23%, #5607D6 122.71%)',
-	// transform: 'rotate(-180deg)'
+	color: 'white'
 });
-export default function Hero(){
-	return(
+const SIL3 = new URL(
+	'../../assets/SIL_3.png',
+	import.meta.url
+);
+const styles = {
+	position: 'absolute',
+	left: '10px',
+	top: '95px',
+	width: '500px',
+	height: '650px',
+}
+const JoinBtn = styled(Button)({
+	background: '#01FFA3',
+	color: '#291381',
+	borderRadius: '50px',
+	fontWeight: '800',
+	fontStyle: 'normal',
+	padding: '15px'
+});
+export default function Hero() {
+	return (
 		<HeroGrid
 			container
-			justifyContent={'center'}
-			alignContent={'center'}
-			spacing={'column'}
-			sx={{paddingTop: '5%'}}
-			
+			direction="row"
+			justifyContent='center'
+			alignItems='center'
+			style={{ minHeight: '50vh' }}
+		// alignContent={'center'}
+		// spacing={'column'}
+		// sx={{ paddingTop: '125px' }}
+
 		>
-			<Grid item xs={12}>
-				<Typography 
-				variant="h3" 
-				align="center" 
-				gutterBottom={true}
-				>
-					Floor Watchers Society</Typography>
+			<Grid item sm={2} md={4} lg={3}>
+				{//@ts-ignore
+					<img src={SIL3.href} style={styles}></img>
+				}
 			</Grid>
-			<Grid container justifyContent={'center'}> 
-			<Grid item xs={8}>
-				<Typography align="center" variant="h6">
-				Floor Watchers Society provides 3333 members real-life utility with exclusive access to once in a lifetime luxury experiences at community and token holder chosen sporting events.
-				</Typography>
+			<Grid item sm={7} md={8} lg={9}>
+				<Grid container>
+					<Grid item xs={12}>
+						<Typography
+							variant="h5"
+							gutterBottom={true}
+							sx={{ color: '#01FFA3' }}
+						>
+							Launching Soon</Typography>
+					</Grid>
+					<Grid item xs={12}>
+						<Typography
+							variant="h3"
+							gutterBottom={true}
+						>
+							Floor Watchers Society</Typography>
+					</Grid>
+					<Grid item xs={12}>
+						<Typography variant="h6">
+							Floor Watchers Society provides 3333 members real-life utility with exclusive access to once in a lifetime luxury experiences at community and token holder chosen sporting events.
+						</Typography>
+					</Grid>
+					<Grid item xs={12} sx={{ marginTop: '20px' }}>
+						<JoinBtn size="large">
+							Join Floor Watchers Society Discord
+						</JoinBtn>
+					</Grid>
+				</Grid>
+
 			</Grid>
-			</Grid>
-			
 		</HeroGrid>
 	)
 }

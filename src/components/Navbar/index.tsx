@@ -13,6 +13,8 @@ import { shortenAddress } from "../../utils/candy-machine";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
+//@ts-ignore
+import classes from './navbar.module.css';
 
 const logo = new URL(
 	'../../assets/LOGO.png',
@@ -22,6 +24,10 @@ const logo = new URL(
 const FWSNav = styled(AppBar)({
 	color: 'white',
 	background: 'linear-gradient(162.2deg, #291381 23%, #5607D6 122.71%)',
+	marginBottom: '-650px',
+	paddingBottom: '650px',
+	paddingLeft: '10px',
+	marginRIght: '10px'
 });
 const FWSWalletBtn = styled(WalletMultiButton)({
 	background: '#01FFA3',
@@ -39,7 +45,7 @@ export const Navbar = () => {
 	const navigate = useNavigate();
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<FWSNav position="static" className={'navbar-bg'} color="transparent" elevation={0}>
+			<FWSNav position="static" color="transparent" elevation={0}>
 				<Toolbar>
 					<Typography
 						variant="h6"
@@ -80,10 +86,10 @@ export const Navbar = () => {
 							</MenuItem>
 						</Grid>
 					</Grid>
-					<SocialBtn size="small" sx={{marginRight:'5px'}} onClick={() => { navigate('https://discord.gg/yfw7dju66s') }}>
+					<SocialBtn size="small" sx={{marginRight:'15px'}} onClick={() => { navigate('https://discord.gg/yfw7dju66s') }}>
 						<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
 					</SocialBtn>
-					<SocialBtn size="small" sx={{marginRight:'5px'}} onClick={() => { navigate('https://twitter.com/FloorWatchers') }}>
+					<SocialBtn size="small" sx={{marginRight:'15px'}} onClick={() => { navigate('https://twitter.com/FloorWatchers') }}>
 					<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
 					</SocialBtn>
 					{!wallet.connected ? (

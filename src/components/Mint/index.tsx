@@ -10,7 +10,7 @@ export default function Mint() {
 			justifyContent={'center'}
 			alignContent={'center'}
 			spacing={'column'}
-			marginTop={'50px'}
+			marginTop={'450px'}
 		>
 			<Grid item xs={12}>
 				<Typography variant="h2" align="center">Mint</Typography>
