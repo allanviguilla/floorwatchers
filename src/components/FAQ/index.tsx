@@ -1,14 +1,17 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { styled } from '@mui/material/styles';
-import { Grid } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion"
 import MuiAccordionSummary, {
 	AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-
+const SIL2 = new URL(
+	'../../assets/SIL2.png',
+	import.meta.url
+);
 const Accordion = styled((props: AccordionProps) => (
 	<MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -31,7 +34,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 		theme.palette.mode === 'dark'
 			? 'rgba(255, 255, 255, .05)'
 			: 'rgba(0, 0, 0, .03)',
-	flexDirection: 'row-reverse',
+	flexDirection: 'row',
 	'& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
 		transform: 'rotate(90deg)',
 	},
@@ -60,47 +63,61 @@ export default function FAQ() {
 			spacing={'column'}
 			marginTop={'50px'}
 		>
-			<Typography variant="h2">FAQ</Typography>
-			<Grid container sx={{marginBottom:'50px', marginTop:'30px'}}>
-				<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-					<AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-						<Typography>Collapsible Group Item #1</Typography>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-							malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-							sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-							sit amet blandit leo lobortis eget.
-						</Typography>
-					</AccordionDetails>
-				</Accordion>
-				<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-					<AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-						<Typography>Collapsible Group Item #2</Typography>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-							malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-							sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-							sit amet blandit leo lobortis eget.
-						</Typography>
-					</AccordionDetails>
-				</Accordion>
-				<Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-					<AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-						<Typography>Collapsible Group Item #3</Typography>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-							malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-							sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-							sit amet blandit leo lobortis eget.
-						</Typography>
-					</AccordionDetails>
-				</Accordion>
+			{/* <Typography variant="h2">?</Typography> */}
+			<Paper elevation={6} sx={{zIndex:99, background:'#F3F5F6'}}>
+				<Grid container >
+					<Grid item xs={6} textAlign='center'>
+						<img src={SIL2.href}></img>
+					</Grid>
+					<Grid item xs={6}>
+						<Typography variant='h5' align='center'>Frequently Asked Questions</Typography>
+						<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+							<AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+								<Typography>Collapsible Group Item #1</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<Typography>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+									malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
+									sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+									sit amet blandit leo lobortis eget.
+								</Typography>
+							</AccordionDetails>
+						</Accordion>
+						<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+							<AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+								<Typography>Collapsible Group Item #2</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<Typography>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+									malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
+									sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+									sit amet blandit leo lobortis eget.
+								</Typography>
+							</AccordionDetails>
+						</Accordion>
+						<Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+							<AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+								<Typography>Collapsible Group Item #3</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<Typography>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+									malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
+									sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+									sit amet blandit leo lobortis eget.
+								</Typography>
+							</AccordionDetails>
+						</Accordion>
+					</Grid>
+				</Grid>
+			</Paper>
+			<Grid container sx={{ marginBottom: '50px', marginTop: '30px' }}>
+
+			</Grid>
+			<Grid item xs={12}>
+				<hr></hr>
 			</Grid>
 		</Grid>
 	)
