@@ -80,10 +80,10 @@ export const Navbar = () => {
 							</MenuItem>
 						</Grid>
 					</Grid>
-					<SocialBtn size="small" sx={{marginRight:'5px'}}>
+					<SocialBtn size="small" sx={{marginRight:'5px'}} onClick={() => { navigate('https://discord.gg/yfw7dju66s') }}>
 						<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
 					</SocialBtn>
-					<SocialBtn size="small" sx={{marginRight:'5px'}}>
+					<SocialBtn size="small" sx={{marginRight:'5px'}} onClick={() => { navigate('https://twitter.com/FloorWatchers') }}>
 					<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
 					</SocialBtn>
 					{!wallet.connected ? (
