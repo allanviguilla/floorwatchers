@@ -1,10 +1,15 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
+import { styled } from '@mui/styles';
 
+const HeroGrid = styled(Grid)({
+	// background: 'linear-gradient(162.2deg, #291381 23%, #5607D6 122.71%)',
+	// transform: 'rotate(-180deg)'
+});
 export default function Hero(){
 	return(
-		<Grid
+		<HeroGrid
 			container
 			justifyContent={'center'}
 			alignContent={'center'}
@@ -28,6 +33,6 @@ export default function Hero(){
 			</Grid>
 			</Grid>
 			
-		</Grid>
+		</HeroGrid>
 	)
 }
