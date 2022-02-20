@@ -33,20 +33,24 @@ const FWSWalletBtn = styled(WalletMultiButton)({
 	background: '#01FFA3',
 	color: '#291381',
 	borderRadius: '100px',
-	// lineHeight: '50px'
-	// width: '220px'
+	"&:hover":{
+		color:'white',
+		backgroundColor:'#01FFA3 !important'
+	}
 });
 const FWSWalletDisconnectBtn = styled(WalletDisconnectButton)({
 	background: '#01FFA3',
 	color: '#291381',
 	borderRadius: '100px',
-	// lineHeight: '40px'
-	// width: '220px'
+	"&:hover":{
+		color:'white',
+		backgroundColor:'#01FFA3 !important'
+	}
 });
 const SocialBtn = styled(IconButton)({
-	backgroundColor: '#39EB9B !important',
-	borderRadius: '100px !important',
-	color: 'white !important',
+	backgroundColor: '#39EB9B',
+	borderRadius: '100px',
+	color: 'white',
 	height: '40px',
 	width: '40px',
 	marginTop:'5px'
@@ -134,7 +138,7 @@ export const Navbar = () => {
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						<Grid container justifyContent="center">
 							<Grid item>
-								<MenuItem onClick={() => { navigate('/#mint') }}>
+								<MenuItem onClick={() => { navigate('#playbook') }}>
 									<Typography
 										variant="h6"
 									>
