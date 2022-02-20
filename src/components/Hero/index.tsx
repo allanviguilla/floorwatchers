@@ -56,7 +56,7 @@ export default function Hero() {
 	const smMatch = useMediaQuery('(max-width:899px)');
 	const mdMatch = useMediaQuery('(max-width:1199px)');
 	const lgMatch = useMediaQuery('(min-width:1200px)');
-	
+
 	console.log(smMatch)
 	return (
 		<HeroGrid
@@ -68,23 +68,23 @@ export default function Hero() {
 			<Grid item xs={3} sm={6} md={5} lg={4}>
 
 				{
-				xsMatch ? (
-					//@ts-ignore
-					''
-				) : smMatch ? (
-					//@ts-ignore
-					<img src={SIL.href} style={smStyles}></img>
-				) : mdMatch ? (
-					//@ts-ignore
-					<img src={SIL.href} style={mdStyles}></img>
-				) : lgMatch ? (
-					//@ts-ignore
-					<img src={SIL.href} style={lgStyles}></img>
-				) :
-				('')
+					xsMatch ? (
+						//@ts-ignore
+						''
+					) : smMatch ? (
+						//@ts-ignore
+						<img src={SIL.href} style={smStyles}></img>
+					) : mdMatch ? (
+						//@ts-ignore
+						<img src={SIL.href} style={mdStyles}></img>
+					) : lgMatch ? (
+						//@ts-ignore
+						<img src={SIL.href} style={lgStyles}></img>
+					) :
+						('')
 				}
 			</Grid>
-			<Grid item  sm={6} md={7} lg={7} sx={{display:{xs:'flex', sm:'flex',md:'flex',lg:'flex'}}}>
+			<Grid item sm={6} md={7} lg={7} sx={{ display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'flex' } }}>
 				<Grid container>
 					<Grid item xs={12}>
 						<Typography
@@ -107,9 +107,11 @@ export default function Hero() {
 						</Typography>
 					</Grid>
 					<Grid item xs={12} sx={{ marginTop: '20px' }}>
-						<JoinBtn size="large" variant='contained'>
-							Join Floor Watchers Society Discord
-						</JoinBtn>
+						<a href="https://discord.gg/yfw7dju66s" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
+							<JoinBtn size="large" variant='contained'>
+								Join Floor Watchers Society
+							</JoinBtn>
+						</a>
 					</Grid>
 				</Grid>
 

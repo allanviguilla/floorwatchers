@@ -37,7 +37,7 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 	} else if (net === 'devnet') {
 		network = WalletAdapterNetwork.Devnet;
 		endpoint = 'https://psytrbhymqlkfrhudd.dev.genesysgo.net:8899/';
-	}else if (net ===  'localnet'){
+	} else if (net === 'localnet') {
 		network = WalletAdapterNetwork.Devnet;
 		endpoint = 'http://127.0.0.1:8899';
 	}
@@ -57,7 +57,6 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 		],
 		[network]
 	);
-
 	return (
 		<BrowserRouter basename={"/"}>
 			<ConnectionProvider endpoint={endpoint}>

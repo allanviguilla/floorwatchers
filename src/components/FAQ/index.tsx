@@ -10,7 +10,8 @@ import MuiAccordionSummary, {
 	AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import faq from "../../static/faq.json";
+import { DefaultTheme, useTheme } from "@mui/styles";
 
 const faPlusIcon = faPlus as IconProp;
 const faXMarkIcon = faXmark as IconProp;
@@ -22,6 +23,16 @@ const questionIcon = new URL(
 	'../../assets/fws_question.png',
 	import.meta.url
 );
+// const styles = (theme) => ({
+// 	root: {
+// 		backgroundColor: 'blue',
+// 		// Match [sm, md)
+// 		//       [600px, 900px)
+// 		[theme.breakpoints.between('sm', 'md')]: {
+// 			backgroundColor: 'red',
+// 		},
+// 	},
+// });
 const Accordion = styled((props: AccordionProps) => (
 	<MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -34,7 +45,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 	/>
 ))(({ theme }) => ({
 	backgroundColor: '#F3F5F6',
-	color:'#360ED6',
+	color: '#360ED6',
 	flexDirection: 'row',
 	'& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
 		transform: 'rotate(90deg)',
@@ -47,15 +58,26 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 	padding: theme.spacing(2),
 	backgroundColor: '#F3F5F6',
-	color:'gray'
+	color: 'gray'
 }));
 
 export default function FAQ() {
-	const [expanded, setExpanded] = React.useState<string | false>('panel1');
-	const expandIcon = <FontAwesomeIcon icon={faPlusIcon} style={{color:'#360ED6'}}/>;
-	const minimizeIcon = <FontAwesomeIcon icon={faXMarkIcon} style={{color:'#360ED6'}}/>;
+	const [expanded, setExpanded] = React.useState<number | false>(0);
+	const expandIcon = <FontAwesomeIcon icon={faPlusIcon} style={{ color: '#360ED6' }} />;
+	const minimizeIcon = <FontAwesomeIcon icon={faXMarkIcon} style={{ color: '#360ED6' }} />;
+	const theme = useTheme();
+	// const styles = (theme: any) => ({
+	// 	root: {
+	// 		backgroundColor: 'blue',
+	// 		// Match [sm, md)
+	// 		//       [600px, 900px)
+	// 		[theme.breakpoints.between('sm', 'md')]: {
+	// 			backgroundColor: 'red',
+	// 		},
+	// 	},
+	// });
 	const handleChange =
-		(panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+		(panel: number) => (event: React.SyntheticEvent, newExpanded: boolean) => {
 			setExpanded(newExpanded ? panel : false);
 		};
 	return (
@@ -66,14 +88,16 @@ export default function FAQ() {
 			spacing={'column'}
 			marginTop={'50px'}
 		>
-			<Grid item md={12} sx={{display:{xs:'none', sm:'none',md:'flex'},
-			position:'relative',
-			left:'255px',
-			top:'-25px'}}>
+			<Grid item md={12} sx={{
+				display: { xs: 'none', sm: 'none', md: 'flex' },
+				position: 'relative',
+				left: '255px',
+				top: '-25px'
+			}}>
 				<img src={questionIcon.href}></img>
 			</Grid>
 			<Paper elevation={6} sx={{ zIndex: 99, background: '#F3F5F6', height: '554px' }}>
-				<Grid container >
+				<Grid container>
 					<Grid item xs={5} textAlign='center' sx={{
 						position: 'relative',
 						top: '-20px',
@@ -82,55 +106,28 @@ export default function FAQ() {
 					}}>
 						<img src={fws_male_hair2.href}></img>
 					</Grid>
-					<Grid item xs={12} md={6} sx={{ marginTop: '20px', paddingRight: '25px', paddingLeft: '25px' }}>
+					<Grid item xs={12} md={6} sx={{ marginTop: '20px', paddingRight: '25px', paddingLeft: '25px'}}>
 						<Typography variant='h5' sx={{
-							color:'#360ED6',
+							color: '#360ED6',
 							fontWeight: '700',
-							marginBottom:'10px'
+							marginBottom: '10px'
 						}}>Frequently Asked Questions</Typography>
-						<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-							<AccordionSummary aria-controls="panel1d-content" id="panel1d-header"
-							expandIcon={expanded === 'panel1'?minimizeIcon:expandIcon}
-							>
-								<Typography sx={{fontWeight: '700'}}>Lorem Ipsum Hoe Ass</Typography>
-							</AccordionSummary>
-							<AccordionDetails>
-								<Typography>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-									malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-									sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-									sit amet blandit leo lobortis eget.
-								</Typography>
-							</AccordionDetails>
-						</Accordion>
-						<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-							<AccordionSummary aria-controls="panel2d-content" id="panel2d-header"
-							expandIcon={expanded === 'panel2'?minimizeIcon:expandIcon}>
-								<Typography sx={{fontWeight: '700'}}>Collapsible Group Item #2</Typography>
-							</AccordionSummary>
-							<AccordionDetails>
-								<Typography>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-									malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-									sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-									sit amet blandit leo lobortis eget.
-								</Typography>
-							</AccordionDetails>
-						</Accordion>
-						<Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-							<AccordionSummary aria-controls="panel3d-content" id="panel3d-header"
-							expandIcon={expanded === 'panel3'?minimizeIcon:expandIcon}>
-								<Typography sx={{fontWeight: '700'}}>Collapsible Group Item #3</Typography>
-							</AccordionSummary>
-							<AccordionDetails>
-								<Typography>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-									malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-									sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-									sit amet blandit leo lobortis eget.
-								</Typography>
-							</AccordionDetails>
-						</Accordion>
+						{faq.map((faqAcc, index) => {
+							return (
+								<Accordion key={index} expanded={expanded === index} onChange={handleChange(index)}>
+									<AccordionSummary aria-controls={index + "d-content"} id={index + "d-header"}
+										expandIcon={expanded === index ? minimizeIcon : expandIcon}
+									>
+										<Typography sx={{ fontWeight: '700' }}>{faqAcc.summary.replace(/\n/g,"<br>")}</Typography>
+									</AccordionSummary>
+									<AccordionDetails>
+										<Typography>
+											{faqAcc.detail}
+										</Typography>
+									</AccordionDetails>
+								</Accordion>
+							)
+						})}
 					</Grid>
 				</Grid>
 			</Paper>

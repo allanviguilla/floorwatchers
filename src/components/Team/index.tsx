@@ -64,7 +64,7 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							<CardActionArea>
+							{/* <CardActionArea> */}
 								{
 								<TeamMedia
 								//@ts-ignore
@@ -97,26 +97,19 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							</CardActionArea>
+							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
 								</Button>
 							</CardActions>
 						</TeamCard>
-						{/* <Avatar
-							alt="Allan"
-							src={allan.href}
-							sx={{ width: 150, height: 150 }}
-						/> */}
-
 					</Grid>
-					{/* <Typography align="center" variant={"h5"}>Allan</Typography> */}
 				</Grid>
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							<CardActionArea>
+							{/* <CardActionArea> */}
 								{
 								<TeamMedia
 								//@ts-ignore
@@ -149,7 +142,7 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							</CardActionArea>
+							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -162,7 +155,7 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							<CardActionArea>
+							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -192,7 +185,7 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							</CardActionArea>
+							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -205,7 +198,7 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							<CardActionArea>
+							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -235,7 +228,7 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							</CardActionArea>
+							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -248,7 +241,7 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							<CardActionArea>
+							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -278,7 +271,7 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							</CardActionArea>
+							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -290,7 +283,7 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							<CardActionArea>
+							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -320,7 +313,7 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							</CardActionArea>
+							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -333,7 +326,7 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							<CardActionArea>
+							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -363,7 +356,7 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							</CardActionArea>
+							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share

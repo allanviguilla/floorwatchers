@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Grid, Box, MenuItem, Link, IconButton, Menu} from "@mui/material";
+import { Grid, Box, MenuItem, Link, IconButton, Menu } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/styles';
 import {
@@ -33,18 +33,18 @@ const FWSWalletBtn = styled(WalletMultiButton)({
 	background: '#01FFA3',
 	color: '#291381',
 	borderRadius: '100px',
-	"&:hover":{
-		color:'white',
-		backgroundColor:'#01FFA3 !important'
+	"&:hover": {
+		color: 'white',
+		backgroundColor: '#01FFA3 !important'
 	}
 });
 const FWSWalletDisconnectBtn = styled(WalletDisconnectButton)({
 	background: '#01FFA3',
 	color: '#291381',
 	borderRadius: '100px',
-	"&:hover":{
-		color:'white',
-		backgroundColor:'#01FFA3 !important'
+	"&:hover": {
+		color: 'white',
+		backgroundColor: '#01FFA3 !important'
 	}
 });
 const SocialBtn = styled(IconButton)({
@@ -53,7 +53,7 @@ const SocialBtn = styled(IconButton)({
 	color: 'white',
 	height: '40px',
 	width: '40px',
-	marginTop:'5px'
+	marginTop: '5px'
 	// linHeight: '50px; !important'
 });
 export const Navbar = () => {
@@ -81,7 +81,9 @@ export const Navbar = () => {
 						sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
 					>
 						<Link onClick={() => { navigate('/') }}>
-							<img src={logo.href} width="120" height="75" style={{ marginTop: '10px' }} />
+							<a href="#">
+								<img src={logo.href} width="120" height="75" style={{ marginTop: '10px' }} />
+							</a>
 						</Link>
 					</Typography>
 
@@ -168,14 +170,14 @@ export const Navbar = () => {
 					</Box>
 					<Box sx={{ flexGrow: 0 }}>
 						<Grid container>
-							<Grid item sx={{display: { xs: 'none', md: 'flex' } }}>
+							<Grid item sx={{ display: { xs: 'none', md: 'flex' } }}>
 								<a href="https://discord.gg/yfw7dju66s" target="_blank" rel="noopener noreferrer">
 									<SocialBtn size="small" sx={{ marginRight: '15px' }}>
 										<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
 									</SocialBtn>
 								</a>
 							</Grid>
-							<Grid item sx={{display: { xs: 'none', md: 'flex' } }}>
+							<Grid item sx={{ display: { xs: 'none', md: 'flex' } }}>
 								<a href="https://twitter.com/FloorWatchers" target="_blank" rel="noopener noreferrer">
 									<SocialBtn size="small" sx={{ marginRight: '15px' }}>
 										<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
