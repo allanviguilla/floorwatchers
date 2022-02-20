@@ -23,23 +23,23 @@ const xsStyles = {
 	maxHeight: '100%',
 }
 const smStyles = {
-	position: 'absolute',
+	position: 'relative',
 	left: '10px',
-	top: '208px',
+	top: '84px',
 	maxWidth: '400px',
 	maxHeight: '100%',
 }
 const mdStyles = {
-	position: 'absolute',
-	left: '10px',
-	top: '75px',
+	position: 'relative',
+	left: '-25px',
+	top: '-20px',
 	maxWidth: '500px',
 	maxHeight: '100%',
 }
 const lgStyles = {
-	position: 'absolute',
-	left: '10px',
-	top: '74px',
+	position: 'relative',
+	left: '-250px',
+	top: '-20px',
 	maxWidth: '500px',
 	maxHeight: '100%',
 }

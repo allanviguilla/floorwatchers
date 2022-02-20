@@ -64,12 +64,17 @@ export default function FAQ() {
 			marginTop={'50px'}
 		>
 			{/* <Typography variant="h2">?</Typography> */}
-			<Paper elevation={6} sx={{zIndex:99, background:'#F3F5F6'}}>
+			<Paper elevation={6} sx={{zIndex:99, background:'#F3F5F6', height:'554px'}}>
 				<Grid container >
-					<Grid item xs={6} textAlign='center'>
+					<Grid item xs={5} textAlign='center' sx={{
+						position:'relative',
+						top:'-20px',
+						left:'50px',
+						display:{xs:'none',sm:'none',md:'flex'}
+					}}>
 						<img src={fws_male_hair2.href}></img>
 					</Grid>
-					<Grid item xs={6}>
+					<Grid item xs={12} md={6} sx={{marginTop:'20px', paddingRight:'25px', paddingLeft:'25px'}}>
 						<Typography variant='h5' align='center'>Frequently Asked Questions</Typography>
 						<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
 							<AccordionSummary aria-controls="panel1d-content" id="panel1d-header">

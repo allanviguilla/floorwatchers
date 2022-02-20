@@ -39,7 +39,7 @@ export default function Playbook() {
 			marginTop={'100px'}
 		>
 			<Grid item xs={12} sx={{ marginBottom: '50px' }}>
-				<PlaybookTitle variant="h2" align="center">Season 1 Playbook</PlaybookTitle>
+				<PlaybookTitle variant="h2" align="center">Season 1</PlaybookTitle>
 			</Grid>
 			<Grid container sx={{ marginBottom: '30px' }} spacing={'40'} justifyContent='center'>
 				<Grid item xs={12} sm={4}>
