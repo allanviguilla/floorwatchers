@@ -4,7 +4,7 @@ import { Button, Grid, Paper } from "@mui/material";
 import { styled } from "@mui/material";
 
 const utilDAO = new URL(
-	'../../assets/UTIL DRAW.png',
+	'../../assets/UTIL DAO.png',
 	import.meta.url
 );
 const utilBrunch = new URL(

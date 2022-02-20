@@ -33,7 +33,14 @@ const FWSWalletBtn = styled(WalletMultiButton)({
 	background: '#01FFA3',
 	color: '#291381',
 	borderRadius: '100px',
-	lineHeight: '50px'
+	// lineHeight: '50px'
+	// width: '220px'
+});
+const FWSWalletDisconnectBtn = styled(WalletDisconnectButton)({
+	background: '#01FFA3',
+	color: '#291381',
+	borderRadius: '100px',
+	// lineHeight: '40px'
 	// width: '220px'
 });
 const SocialBtn = styled(IconButton)({
@@ -42,7 +49,8 @@ const SocialBtn = styled(IconButton)({
 	color: 'white !important',
 	height: '40px',
 	width: '40px',
-	linHeight: '50px; !important'
+	marginTop:'5px'
+	// linHeight: '50px; !important'
 });
 export const Navbar = () => {
 	const wallet = useWallet();
@@ -157,14 +165,14 @@ export const Navbar = () => {
 					<Box sx={{ flexGrow: 0 }}>
 						<Grid container>
 							<Grid item sx={{display: { xs: 'none', md: 'flex' } }}>
-								<a href="https://discord.gg/yfw7dju66s">
+								<a href="https://discord.gg/yfw7dju66s" target="_blank" rel="noopener noreferrer">
 									<SocialBtn size="small" sx={{ marginRight: '15px' }}>
 										<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
 									</SocialBtn>
 								</a>
 							</Grid>
 							<Grid item sx={{display: { xs: 'none', md: 'flex' } }}>
-								<a href="https://twitter.com/FloorWatchers">
+								<a href="https://twitter.com/FloorWatchers" target="_blank" rel="noopener noreferrer">
 									<SocialBtn size="small" sx={{ marginRight: '15px' }}>
 										<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
 									</SocialBtn>
@@ -175,7 +183,7 @@ export const Navbar = () => {
 							{!wallet.connected ? (
 								<FWSWalletBtn>Connect Wallet</FWSWalletBtn>
 							) : (
-								<WalletDisconnectButton>{wallet.publicKey ? shortenAddress(wallet.publicKey?.toString()) : <p>Disconnect</p>}</WalletDisconnectButton>
+								<FWSWalletDisconnectBtn>{wallet.publicKey ? shortenAddress(wallet.publicKey?.toString()) : <p>Disconnect</p>}</FWSWalletDisconnectBtn>
 							)}
 						</Grid>
 					</Box>

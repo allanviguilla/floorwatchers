@@ -84,7 +84,7 @@ export default function Hero() {
 				('')
 				}
 			</Grid>
-			<Grid item xs={12} sm={6} md={7} lg={7}>
+			<Grid item  sm={6} md={7} lg={7} sx={{display:{xs:'none', sm:'flex',md:'flex',lg:'flex'}}}>
 				<Grid container>
 					<Grid item xs={12}>
 						<Typography
