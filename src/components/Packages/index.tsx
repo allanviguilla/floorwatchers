@@ -26,31 +26,37 @@ const Title = styled(Typography)({
 	color: '#291381',
 
 });
+const FWSPaper = styled(Paper)({
+	padding: '20px',
+	borderRadius: '20px',
+	width:'300px',
+	boxShadow: '0px 0px 34px rgba(54, 14, 214, 0.3)'
+});
 export default function Packages() {
 	return (
 		<Grid
 			id="packages"
 			container
-			justifyContent={'center'}
-			alignContent={'center'}
 			spacing={'40'}
 			marginTop={'50px'}
 		>
 			<Grid item xs={12} sm={6}>
-				<Grid container>
-					<Grid item xs={12} sx={{ marginBottom: '40px' }}>
-						<Paper elevation={6} sx={{ padding: '20px', borderRadius: '20px' }}>
-							<Grid
-								container
-								direction="row"
-								justifyContent={'center'}
-								alignItems='center'
-								style={{ height: '266px' }}>
-								<Typography>
-									<img src={utilDraw.href}></img>
-								</Typography>
-							</Grid>
-						</Paper>
+				<Grid container justifyContent='center'>
+					<Grid item xs={12} sx={{ marginBottom: '40px' }} >
+						<Grid container justifyContent='center'>
+							<FWSPaper elevation={6} sx={{ padding: '20px', borderRadius: '20px', width: '300px' }}>
+								<Grid
+									container
+									direction="row"
+									alignItems='center'
+									style={{ height: '266px' }}>
+									<Typography>
+										<img src={utilDraw.href} width="300px"></img>
+									</Typography>
+								</Grid>
+							</FWSPaper>
+						</Grid>
+
 					</Grid>
 					<Grid item xs={10}>
 						<Typography variant="h6">
@@ -60,20 +66,23 @@ export default function Packages() {
 				</Grid>
 			</Grid>
 			<Grid item xs={12} sm={6} sx={{ marginBottom: '30px' }}>
-				<Grid container>
+				<Grid container justifyContent='center'>
 					<Grid item xs={12} sx={{ marginBottom: '40px' }}>
-						<Paper elevation={6} sx={{ padding: '20px', borderRadius: '20px' }}>
-							<Grid
-								container
-								direction="row"
-								justifyContent={'center'}
-								alignItems='center'
-								style={{ height: '266px' }}>
-								<Typography>
-									<img src={utilMystery.href}></img>
-								</Typography>
-							</Grid>
-						</Paper>
+						<Grid container justifyContent={'center'}>
+							<FWSPaper elevation={6} sx={{ padding: '20px', borderRadius: '20px', width: '300px' }}>
+								<Grid
+									container
+									direction="row"
+									justifyContent={'center'}
+									alignItems='center'
+									style={{ height: '266px' }}>
+									<Typography>
+										<img src={utilMystery.href} width="300px"></img>
+									</Typography>
+								</Grid>
+							</FWSPaper>
+						</Grid>
+
 					</Grid>
 					<Grid item xs={10}>
 						<Typography variant="h6">

@@ -22,6 +22,12 @@ const PlaybookTitle = styled(Typography)({
 	color: '#291381',
 
 });
+const FWSPaper = styled(Paper)({
+	padding: '20px',
+	borderRadius: '20px',
+	width:'300px',
+	boxShadow: '0px 0px 34px rgba(54, 14, 214, 0.3)'
+});
 export default function Playbook() {
 	return (
 		<Grid
@@ -35,27 +41,27 @@ export default function Playbook() {
 			<Grid item xs={12} sx={{ marginBottom: '50px' }}>
 				<PlaybookTitle variant="h2" align="center">Season 1 Playbook</PlaybookTitle>
 			</Grid>
-			<Grid container sx={{ marginBottom: '30px' }} spacing={'40'}>
-				<Grid item xs={12} sm={6}>
-					<Paper elevation={6} sx={{ padding: '20px',borderRadius: '20px' }}>
+			<Grid container sx={{ marginBottom: '30px' }} spacing={'40'} justifyContent='center'>
+				<Grid item xs={12} sm={4}>
+					<FWSPaper elevation={6}>
 						<Grid
 							container
 							direction="row"
 							justifyContent={'center'}
 							alignItems='center'
-							style={{ height: '266px' }}>
+							style={{ height: '200px' }}>
 							<Typography>
-								<img src={socDraw.href}></img>
+								<img src={socDraw.href} width="300px"></img>
 							</Typography>
 						</Grid>
 
-					</Paper>
+					</FWSPaper>
 				</Grid>
 				<Grid item xs={12} sm={6}>
 					<Grid
 						container
 						direction="row"
-						alignItems='center'
+						// alignItems='center'
 						style={{ height: '266px' }}>
 						<Typography variant="h6">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

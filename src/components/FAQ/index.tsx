@@ -8,8 +8,8 @@ import MuiAccordionSummary, {
 	AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-const SIL2 = new URL(
-	'../../assets/SIL2.png',
+const fws_male_hair2 = new URL(
+	'../../assets/fws_male_hair2.png',
 	import.meta.url
 );
 const Accordion = styled((props: AccordionProps) => (
@@ -67,7 +67,7 @@ export default function FAQ() {
 			<Paper elevation={6} sx={{zIndex:99, background:'#F3F5F6'}}>
 				<Grid container >
 					<Grid item xs={6} textAlign='center'>
-						<img src={SIL2.href}></img>
+						<img src={fws_male_hair2.href}></img>
 					</Grid>
 					<Grid item xs={6}>
 						<Typography variant='h5' align='center'>Frequently Asked Questions</Typography>

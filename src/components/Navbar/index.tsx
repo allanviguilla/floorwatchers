@@ -155,12 +155,6 @@ export const Navbar = () => {
 								</MenuItem>
 							</Grid>
 						</Grid>
-						{/* <Button
-							onClick={handleCloseNavMenu}
-							sx={{ my: 2, color: 'white', display: 'block' }}
-						>
-							Test2
-						</Button> */}
 					</Box>
 					<Box sx={{ flexGrow: 0 }}>
 						<Grid container>
@@ -190,63 +184,6 @@ export const Navbar = () => {
 				</Toolbar>
 			</FWSNav>
 		</Box>
-
-		// <Box sx={{ flexGrow: 1 }}>
-		// 	<FWSNav position="static" color="transparent" elevation={0}>
-		// 		<Toolbar>
-		// 			<Typography
-		// 				variant="h6"
-		// 				component="div"
-		// 				sx={{ flexGrow: 1 }}
-		// 				className="logo-container"
-		// 			>
-		// 				<Link onClick={() => { navigate('/') }}>
-		// 					<img src={logo.href} width="120" height="75" style={{ marginTop: '10px' }} />
-		// 				</Link>
-		// 			</Typography>
-		// <Grid container justifyContent="center">
-		// 	<Grid item>
-		// 		<MenuItem onClick={() => { navigate('/#mint') }}>
-		// 			<Typography
-		// 				variant="h6"
-		// 			>
-		// 				Playbook
-		// 			</Typography>
-		// 		</MenuItem>
-		// 	</Grid>
-		// 	<Grid item>
-		// 		<MenuItem onClick={() => { navigate('/#utilities') }}>
-		// 			<Typography
-		// 				variant="h6"
-		// 			>
-		// 				Team
-		// 			</Typography>
-		// 		</MenuItem>
-		// 	</Grid>
-		// 	<Grid item>
-		// 		<MenuItem>
-		// 			<Typography
-		// 				variant="h6"
-		// 			>
-		// 				FAQ
-		// 			</Typography>
-		// 		</MenuItem>
-		// 	</Grid>
-		// </Grid>
-		// <SocialBtn size="small" sx={{marginRight:'15px'}} onClick={() => { navigate('https://discord.gg/yfw7dju66s') }}>
-		// 	<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
-		// </SocialBtn>
-		// <SocialBtn size="small" sx={{marginRight:'15px'}} onClick={() => { navigate('https://twitter.com/FloorWatchers') }}>
-		// <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
-		// </SocialBtn>
-		// {!wallet.connected ? (
-		// 	<FWSWalletBtn>Connect Wallet</FWSWalletBtn>
-		// ) : (
-		// 	<WalletDisconnectButton>{wallet.publicKey ? shortenAddress(wallet.publicKey?.toString()) : <p>Disconnect</p>}</WalletDisconnectButton>
-		// )}
-		// 		</Toolbar>
-		// 	</FWSNav>
-		// </Box >
 	);
 }
 export default Navbar;
