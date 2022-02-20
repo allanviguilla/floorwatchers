@@ -1,34 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { Avatar, Grid, Card, CardActionArea, CardMedia, CardActions, Button, CardContent, styled, makeStyles } from "@mui/material";
-const fws_fem_hair1 = new URL(
-	'../../assets/fws_fem_hair1.png',
-	import.meta.url
-);
-const fws_fem_hair2 = new URL(
-	'../../assets/fws_fem_hair2.png',
-	import.meta.url
-);
-const fws_fem_hair3 = new URL(
-	'../../assets/fws_fem_hair3.png',
-	import.meta.url
-);
-const fws_male_hair1 = new URL(
-	'../../assets/fws_male_hair1.png',
-	import.meta.url
-);
-const fws_male_hair2 = new URL(
-	'../../assets/fws_male_hair2.png',
-	import.meta.url
-);
-const fws_male_hat1 = new URL(
-	'../../assets/fws_male_hat1.png',
-	import.meta.url
-);
-const fws_male_hat2 = new URL(
-	'../../assets/fws_male_hat2.png',
-	import.meta.url
-);
+import team from "../../static/team.json";
 
 const TeamTitle = styled(Typography)({
 	fontFamily: 'Inter',
@@ -61,10 +34,29 @@ export default function Team() {
 		>
 			<TeamTitle variant="h2">Meet the FWS Family</TeamTitle>
 			<Grid container spacing={3} justifyContent={'center'} marginTop={'10px'}>
+				{team.map((member, index)=>{
+					return(
+						<Grid item xs={12} md={3} key={index}>
+							<Grid container justifyContent={'center'}>
+								<Grid item xs={12}>
+									{/* {'../../assets/team_cards/'+member.img} */}
+									<img src={new URL('../../assets/team_cards/'+member.img,import.meta.url).href}></img>
+								</Grid>
+								<Grid item xs={12}>
+									{member.name}
+								</Grid>
+								<Grid item xs={12}>
+									{member.role}
+								</Grid>
+								<Grid item xs={12}>
+								</Grid>
+							</Grid>
+						</Grid>)
+				})}
+				{/* 
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							{/* <CardActionArea> */}
 								{
 								<TeamMedia
 								//@ts-ignore
@@ -97,7 +89,6 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -109,7 +100,6 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							{/* <CardActionArea> */}
 								{
 								<TeamMedia
 								//@ts-ignore
@@ -142,7 +132,6 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -155,7 +144,6 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -185,7 +173,6 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -198,7 +185,6 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -228,7 +214,6 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -241,7 +226,6 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -271,7 +255,6 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -283,7 +266,6 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -313,7 +295,6 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -326,7 +307,6 @@ export default function Team() {
 				<Grid item xs={12} md={3}>
 					<Grid container justifyContent={'center'}>
 						<TeamCard sx={{ maxWidth: 345 }}>
-							{/* <CardActionArea> */}
 								<CardMedia
 									component="img"
 									height="300px"
@@ -356,7 +336,6 @@ export default function Team() {
 									</Grid>
 
 								</CardContent>
-							{/* </CardActionArea> */}
 							<CardActions>
 								<Button size="small" color="primary">
 									Share
@@ -366,6 +345,7 @@ export default function Team() {
 
 					</Grid>
 				</Grid>
+				*/}
 			</Grid>
 		</Grid>
 	)

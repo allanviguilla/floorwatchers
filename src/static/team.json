@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Khalil",
+        "img": "fws_fem_purple.png",
+        "role": "Head of Tech"
+    },
+	{
+		"name":"Sommo",
+		"img":"fws_male_blue.png",
+		"role":"FWS Lead"
+	},
+	{
+		"name":"Allan",
+		"img":"fws_male_cyan.png",
+		"role":"Head of Marketing"
+	},
+	{
+		"name":"Dre",
+		"img":"fws_male_olive.png",
+		"role":"Head of Design"
+	},
+	{
+		"name":"Juan",
+		"img":"fws_male_orange.png",
+		"role":"Design"
+	},
+	{
+		"name":"Rory",
+		"img":"fws_male_pink.png",
+		"role":"Business Development"
+	},
+	{
+		"name":"Sook",
+		"img":"fws_male_yellow.png",
+		"role":"Community Manager"
+	}
+]
