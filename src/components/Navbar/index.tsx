@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Grid, Box, MenuItem, Link, IconButton, Container, Menu, Button, Tooltip, Avatar } from "@mui/material";
+import { Grid, Box, MenuItem, Link, IconButton, Menu} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/styles';
 import {
@@ -14,8 +14,6 @@ import { shortenAddress } from "../../utils/candy-machine";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
-//@ts-ignore
-import classes from './navbar.module.css';
 
 const logo = new URL(
 	'../../assets/LOGO.png',

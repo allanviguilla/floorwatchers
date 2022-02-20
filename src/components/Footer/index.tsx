@@ -54,7 +54,7 @@ export default function Footer() {
 				</Grid>
 			</Grid>
 			<Grid item xs={5}>
-				<Grid container>
+				{/* <Grid container>
 					<Grid item xs={3}>
 						<Typography>About</Typography>
 					</Grid>
@@ -67,7 +67,7 @@ export default function Footer() {
 					<Grid item xs={3}>
 						<Typography>Social</Typography>
 					</Grid>
-				</Grid>
+				</Grid> */}
 			</Grid>
 			<Grid item xs={12} marginBottom={10}>
 				<Grid container>
