@@ -2,7 +2,7 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import { Button, Grid, Paper } from "@mui/material";
 import { styled } from "@mui/material";
-
+import STRINGS from "../../static/static.json";
 const socDraw = new URL(
 	'../../assets/UTIL SOCIETY.png',
 	import.meta.url
@@ -64,7 +64,7 @@ export default function Playbook() {
 						// alignItems='center'
 						style={{ height: '266px' }}>
 						<Typography variant="h6">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							{STRINGS.society_draw.text}
 						</Typography>
 					</Grid>
 				</Grid>

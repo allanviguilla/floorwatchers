@@ -3,6 +3,8 @@ import Typography from "@mui/material/Typography";
 import { Button, Grid, Paper } from "@mui/material";
 import { styled } from "@mui/material";
 
+import STRINGS from "../../static/static.json";
+
 const utilDraw = new URL(
 	'../../assets/UTIL DRAW.png',
 	import.meta.url
@@ -59,8 +61,23 @@ export default function Packages() {
 
 					</Grid>
 					<Grid item xs={10}>
+						<Typography variant="h5" sx={{color:'#291381'}} gutterBottom={true}>
+							Commissioner Package
+						</Typography>
+					</Grid>
+					<Grid item xs={10}>
+						<Typography variant="h6" >
+							{STRINGS.commissioner_package.text}
+						</Typography>
+					</Grid>
+					<Grid item xs={10}>
+						<Typography variant="h5" sx={{color:'#291381'}} gutterBottom={true}>
+							Franchise Package
+						</Typography>
+					</Grid>
+					<Grid item xs={10}>
 						<Typography variant="h6">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							{STRINGS.franchise_package.text}
 						</Typography>
 					</Grid>
 				</Grid>
@@ -86,7 +103,7 @@ export default function Packages() {
 					</Grid>
 					<Grid item xs={10}>
 						<Typography variant="h6">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							{STRINGS.mystery_package.text}
 						</Typography>
 					</Grid>
 				</Grid>

@@ -1,0 +1,23 @@
+{
+	"society_draw":{
+		"text":"Floor Watchers Society’s custom on-chain program will run a drawing of NFT holders to select the package winners every week. The draw will provide transparency to the community and a more efficient experience."
+	},
+	"commissioner_package":{
+		"text":"Bi-weekly, one Floor Watchers holder will win two luxury tickets at the sporting event of the winner’s choice."
+	},
+	"franchise_package":{
+		"text":"Every week, five Floor Watchers holders will win two tickets at the sporting event of the winner’s choice"
+	},
+	"mystery_package":{
+		"text":"Floor Watchers Society will purchase a luxury experience at a community-selected sporting event once a month. At least five Floor Watchers holders will win two tickets each to take advantage of this experience. The package will be announced post mint."
+	},
+	"floor_token":{
+		"text":"Floor Watchers holders will be able to stake their Floor Watchers to earn $FLOOR tokens. With $FLOOR tokens, holders will be able to redeem Commissioner, Franchise, and two additional packages with a 15% discount."
+	},
+	"brunch_bets":{
+		"text":"Every Friday, the community will choose between four Sunday sports bets. If the community’s selected bet wins, the Brunch Bet wallet will earn 2000$ worth of sol. If the bet loses, nothing happens!"
+	},
+	"dao":{
+		"text":"Following the Floor Watchers Society mint, a DAO will be formed following council elections run by the community with support from the Floor Watchers Society team. The DAO will be a community-owned and managed entity with minimal involvement from the core team. DAO funds can be directed in whichever way the DAO chooses through on-chain voting. "
+	}
+}
