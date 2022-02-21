@@ -49,6 +49,7 @@ const TeamTitle = styled(Typography)({
 export default function Team() {
 	return (
 		<Grid
+			id="team"
 			container
 			justifyContent={'center'}
 			alignContent={'center'}

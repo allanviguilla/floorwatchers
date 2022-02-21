@@ -140,31 +140,49 @@ export const Navbar = () => {
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						<Grid container justifyContent="center">
 							<Grid item>
-								<MenuItem onClick={() => { navigate('#playbook') }}>
-									<Typography
-										variant="h6"
-										sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'600', fontSize:'36px'}}>
-										Playbook
-									</Typography>
-								</MenuItem>
+								<a href="#playbook" style={{ textDecoration: 'none', color: 'white' }}>
+									<MenuItem onClick={() => { navigate('#playbook') }}>
+										<Typography
+											variant="h6"
+											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
+											Playbook
+										</Typography>
+									</MenuItem>
+								</a>
 							</Grid>
 							<Grid item>
-								<MenuItem onClick={() => { navigate('/#utilities') }}>
-									<Typography
-										variant="h6"
-										sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'600', fontSize:'36px'}}>
-										Team
-									</Typography>
-								</MenuItem>
+								<a href="#team" style={{ textDecoration: 'none', color: 'white' }}>
+									<MenuItem onClick={() => { navigate('/#utilities') }}>
+										<Typography
+											variant="h6"
+											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
+											Team
+										</Typography>
+									</MenuItem>
+								</a>
 							</Grid>
 							<Grid item>
-								<MenuItem>
-									<Typography
-										variant="h6"
-										sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'600', fontSize:'36px'}}>
-										FAQ
-									</Typography>
-								</MenuItem>
+								< a href="https://medium.com/@FloorWatchersSociety/floor-watchers-society-season-1-playbook-6eca89cebcbf" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'white' }}>
+									<MenuItem>
+										<Typography
+											variant="h6"
+											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
+											White Paper
+
+										</Typography>
+									</MenuItem>
+								</a>
+							</Grid>
+							<Grid item>
+								<a href="#faq" style={{ textDecoration: 'none', color: 'white' }}>
+									<MenuItem>
+										<Typography
+											variant="h6"
+											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
+											FAQ
+										</Typography>
+									</MenuItem>
+								</a>
 							</Grid>
 						</Grid>
 					</Box>

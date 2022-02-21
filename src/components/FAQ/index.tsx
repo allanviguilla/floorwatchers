@@ -71,6 +71,7 @@ export default function FAQ() {
 		};
 	return (
 		<Grid
+			id="faq"
 			container
 			justifyContent={'center'}
 			alignContent={'center'}

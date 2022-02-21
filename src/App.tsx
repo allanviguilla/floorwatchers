@@ -16,7 +16,7 @@ import React, { FC, ReactNode, useMemo } from 'react';
 import { AppLayout } from "./components/Layout";
 import Home from "./views/home";
 import Raffle from "./views/raffle";
-
+import './index.css';
 export const App: FC = () => {
 	return (
 		<Context>
