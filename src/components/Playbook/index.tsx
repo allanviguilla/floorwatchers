@@ -68,7 +68,7 @@ export default function Playbook() {
 						direction="row"
 						// alignItems='center'
 						style={{ height: '266px' }}>
-						<Typography variant="h6">
+						<Typography variant="h6" sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'400', fontSize: '24px'}}>
 							{STRINGS.society_draw.text}
 						</Typography>
 					</Grid>

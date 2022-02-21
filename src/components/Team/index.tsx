@@ -81,8 +81,7 @@ export default function Team() {
 									<Grid container justifyContent={'center'}>
 										<Typography sx={{
 											color: '#291381',
-											fontSize: '20px',
-											fontWeight: '900'
+											fontFamily:'Inter, sans-serif !important', fontWeight:'900', fontSize:'20px'
 										}} gutterBottom={true}>
 											{member.name}
 										</Typography>
@@ -92,7 +91,7 @@ export default function Team() {
 									<Grid container justifyContent={'center'}>
 										<Typography sx={{
 											color: '#291381',
-											fontWeight: '600'
+											fontFamily:'Inter, sans-serif !important', fontWeight:'600', fontSize:'16px'
 										}}
 											gutterBottom={true}>
 												{member.role}
@@ -101,7 +100,9 @@ export default function Team() {
 								</Grid>
 								<Grid item xs={12}>
 									<Grid container justifyContent={'center'}>
+										<a href={member.twitter} target="_blank" rel="noopener noreferrer">
 										<FontAwesomeIcon icon={faTwitter} style={{ color: '#03E1FF' }}></FontAwesomeIcon>
+										</a>
 									</Grid>
 								</Grid>
 							</Grid>

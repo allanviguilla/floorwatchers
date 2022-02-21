@@ -62,7 +62,7 @@ export default function Utility() {
 
 					</Grid>
 					<Grid item xs={10}>
-						<Typography variant="h6">
+						<Typography variant="h6" align="center" sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'400', fontSize: '20px'}}>
 							{STRINGS.brunch_bets.text}
 						</Typography>
 					</Grid>
@@ -88,7 +88,7 @@ export default function Utility() {
 
 					</Grid>
 					<Grid item xs={10}>
-						<Typography variant="h6">
+						<Typography variant="h6" align="center" sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'400', fontSize: '20px'}}>
 							{STRINGS.dao.text}
 						</Typography>
 					</Grid>

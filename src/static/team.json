@@ -3,42 +3,42 @@
         "name": "Khalil",
         "img": "fws_fem_purple.png",
         "role": "Head of Tech",
-		"href":""
+		"twitter":"https://twitter.com/khaIilnafis"
     },
 	{
 		"name":"Sommo",
 		"img":"fws_male_blue.png",
 		"role":"FWS Lead",
-		"href":""
+		"twitter":"https://twitter.com/Sommo_LDN"
 	},
 	{
 		"name":"Allan",
 		"img":"fws_male_cyan.png",
 		"role":"Head of Marketing",
-		"href":""
+		"twitter":"https://twitter.com/solfist3r"
 	},
 	{
 		"name":"Dre",
 		"img":"fws_male_olive.png",
 		"role":"Head of Design",
-		"href":""
+		"twitter":"https://twitter.com/justdeandre"
 	},
 	{
 		"name":"Juan",
 		"img":"fws_male_orange.png",
 		"role":"Design",
-		"href":""
+		"twitter":"https://twitter.com/JuantanamoBa3"
 	},
 	{
 		"name":"Rory",
 		"img":"fws_male_pink.png",
 		"role":"Business Development",
-		"href":""
+		"twitter":"https://twitter.com/nftrunitup"
 	},
 	{
 		"name":"Sook",
 		"img":"fws_male_yellow.png",
 		"role":"Community Manager",
-		"href":""
+		"twitter":"https://twitter.com/Sookstradamus"
 	}
 ]

@@ -61,22 +61,22 @@ export default function Packages() {
 
 					</Grid>
 					<Grid item xs={10}>
-						<Typography variant="h5" sx={{color:'#291381'}} gutterBottom={true}>
+						<Typography variant="h5" align="center" sx={{color:'#291381',fontFamily:'Nunito, sans-serif !important', fontWeight:'400',fontSize: '24px'}} gutterBottom={true}>
 							Commissioner Package
 						</Typography>
 					</Grid>
-					<Grid item xs={10}>
-						<Typography variant="h6" >
+					<Grid item xs={10} sx={{marginBottom:'15px'}}>
+						<Typography variant="h6" align="center" sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'400', fontSize: '20px'}}>
 							{STRINGS.commissioner_package.text}
 						</Typography>
 					</Grid>
 					<Grid item xs={10}>
-						<Typography variant="h5" sx={{color:'#291381'}} gutterBottom={true}>
+						<Typography variant="h5" align="center" sx={{color:'#291381',fontFamily:'Nunito, sans-serif !important', fontWeight:'400',fontSize: '24px'}} gutterBottom={true}>
 							Franchise Package
 						</Typography>
 					</Grid>
 					<Grid item xs={10}>
-						<Typography variant="h6">
+						<Typography variant="h6" align="center" sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'400', fontSize: '20px'}}>
 							{STRINGS.franchise_package.text}
 						</Typography>
 					</Grid>
@@ -93,7 +93,7 @@ export default function Packages() {
 									justifyContent={'center'}
 									alignItems='center'
 									style={{ height: '266px' }}>
-									<Typography>
+									<Typography> 
 										<img src={utilMystery.href} width="300px"></img>
 									</Typography>
 								</Grid>
@@ -102,7 +102,7 @@ export default function Packages() {
 
 					</Grid>
 					<Grid item xs={10}>
-						<Typography variant="h6">
+						<Typography variant="h6" align="center" sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'400', fontSize: '20px'}}>
 							{STRINGS.mystery_package.text}
 						</Typography>
 					</Grid>
