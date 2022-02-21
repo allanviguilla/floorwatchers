@@ -116,15 +116,26 @@ export const Navbar = () => {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							<MenuItem onClick={handleCloseNavMenu}>
-								<Typography textAlign="center">Playbook</Typography>
-							</MenuItem>
-							<MenuItem onClick={handleCloseNavMenu}>
-								<Typography textAlign="center">Team</Typography>
-							</MenuItem>
-							<MenuItem onClick={handleCloseNavMenu}>
-								<Typography textAlign="center">FAQ</Typography>
-							</MenuItem>
+							<a href="https://medium.com/@FloorWatchersSociety/floor-watchers-society-season-1-playbook-6eca89cebcbf" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'black' }}>
+								<MenuItem onClick={handleCloseNavMenu}>
+									<Typography textAlign="center">White Paper</Typography>
+								</MenuItem>
+							</a>
+							<a href="#playbook" style={{ textDecoration: 'none', color: 'black' }}>
+								<MenuItem onClick={handleCloseNavMenu}>
+									<Typography textAlign="center">Playbook</Typography>
+								</MenuItem>
+							</a>
+							<a href="#team" style={{ textDecoration: 'none', color: 'black' }}>
+								<MenuItem onClick={handleCloseNavMenu}>
+									<Typography textAlign="center">Team</Typography>
+								</MenuItem>
+							</a>
+							<a href="#faq" style={{ textDecoration: 'none', color: 'black' }}>
+								<MenuItem onClick={handleCloseNavMenu}>
+									<Typography textAlign="center">FAQ</Typography>
+								</MenuItem>
+							</a>
 						</Menu>
 					</Box>
 					<Typography
@@ -139,6 +150,17 @@ export const Navbar = () => {
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						<Grid container justifyContent="center">
+							<Grid item>
+								< a href="https://medium.com/@FloorWatchersSociety/floor-watchers-society-season-1-playbook-6eca89cebcbf" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'white' }}>
+									<MenuItem>
+										<Typography
+											variant="h6"
+											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
+											White Paper
+										</Typography>
+									</MenuItem>
+								</a>
+							</Grid>
 							<Grid item>
 								<a href="#playbook" style={{ textDecoration: 'none', color: 'white' }}>
 									<MenuItem onClick={() => { navigate('#playbook') }}>
@@ -157,17 +179,6 @@ export const Navbar = () => {
 											variant="h6"
 											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
 											Team
-										</Typography>
-									</MenuItem>
-								</a>
-							</Grid>
-							<Grid item>
-								< a href="https://medium.com/@FloorWatchersSociety/floor-watchers-society-season-1-playbook-6eca89cebcbf" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'white' }}>
-									<MenuItem>
-										<Typography
-											variant="h6"
-											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
-											White Paper
 										</Typography>
 									</MenuItem>
 								</a>

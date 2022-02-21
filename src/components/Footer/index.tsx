@@ -41,12 +41,16 @@ export default function Footer() {
 						<Grid container spacing={3}>
 							<Grid item sx={{ display: { xs: 'flex', md: 'flex' } }}>
 								<Typography sx={{ color: 'white' }}>
+								<a href='https://discord.gg/yfw7dju66s' style={{color:'white'}} target="_blank" rel="noopener noreferrer">
 									<FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
+									</a>
 								</Typography>
 							</Grid>
 							<Grid item sx={{ display: { xs: 'flex', md: 'flex' } }}>
 								<Typography sx={{ color: 'white' }}>
+								<a href='https://twitter.com/FloorWatchers' style={{color:'white'}} target="_blank" rel="noopener noreferrer">
 									<FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
+									</a>
 								</Typography>
 							</Grid>
 						</Grid>
