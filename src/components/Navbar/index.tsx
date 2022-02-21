@@ -140,8 +140,8 @@ export const Navbar = () => {
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						<Grid container justifyContent="center">
 							<Grid item>
-								<a href="#playbook" style={{ textDecoration: 'none', color: 'white' }}>
-									<MenuItem onClick={() => { navigate('#playbook') }}>
+								<a href="#roadmap" style={{ textDecoration: 'none', color: 'white' }}>
+									<MenuItem onClick={() => { navigate('#roadmap') }}>
 										<Typography
 											variant="h6"
 											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
