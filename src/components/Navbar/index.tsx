@@ -143,7 +143,7 @@ export const Navbar = () => {
 								<MenuItem onClick={() => { navigate('#playbook') }}>
 									<Typography
 										variant="h6"
-									>
+										sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'600', fontSize:'36px'}}>
 										Playbook
 									</Typography>
 								</MenuItem>
@@ -152,7 +152,7 @@ export const Navbar = () => {
 								<MenuItem onClick={() => { navigate('/#utilities') }}>
 									<Typography
 										variant="h6"
-									>
+										sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'600', fontSize:'36px'}}>
 										Team
 									</Typography>
 								</MenuItem>
@@ -161,7 +161,7 @@ export const Navbar = () => {
 								<MenuItem>
 									<Typography
 										variant="h6"
-									>
+										sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'600', fontSize:'36px'}}>
 										FAQ
 									</Typography>
 								</MenuItem>

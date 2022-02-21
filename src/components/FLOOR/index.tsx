@@ -40,7 +40,7 @@ export default function Floor() {
 			marginTop={'100px'}
 		>
 			<Grid container sx={{ marginBottom: '30px' }} spacing={'40'} justifyContent='center'>
-				<Grid item xs={12} sm={4}>
+				<Grid item xs={12} sm={12} md={4}>
 					<Grid container justifyContent={'center'}>
 						<FWSPaper elevation={6} sx={{ padding: '20px', borderRadius: '20px', width: '300px' }}>
 							<Grid
@@ -56,7 +56,7 @@ export default function Floor() {
 						</FWSPaper>
 					</Grid>
 				</Grid>
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} sm={12} md={6}>
 					<Grid
 						container
 						direction="row"

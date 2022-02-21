@@ -20,14 +20,14 @@ const xsStyles = {
 }
 const smStyles = {
 	position: 'relative',
-	left: '10px',
+	left: '-30px',
 	top: '84px',
 	maxWidth: '400px',
 	maxHeight: '100%',
 }
 const mdStyles = {
 	position: 'relative',
-	left: '-25px',
+	left: '-45px',
 	top: '-20px',
 	maxWidth: '500px',
 	maxHeight: '100%',
@@ -43,6 +43,7 @@ const JoinBtn = styled(Button)({
 	background: '#01FFA3',
 	color: '#291381',
 	borderRadius: '50px',
+	fontFamily:'Nunito, sans-serif !important',
 	fontWeight: '800',
 	fontStyle: 'normal',
 	padding: '20px'
@@ -61,7 +62,7 @@ export default function Hero() {
 			alignItems='center'
 			style={{ minHeight: '600px' }}
 		>
-			<Grid item xs={3} sm={6} md={5} lg={4}>
+			<Grid item xs={3} sm={5} md={5} lg={3}>
 
 				{
 					xsMatch ? (
@@ -80,13 +81,13 @@ export default function Hero() {
 						('')
 				}
 			</Grid>
-			<Grid item sm={6} md={7} lg={7} sx={{ display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'flex' } }}>
+			<Grid item sm={7} md={7} lg={9} sx={{ display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'flex' } }}>
 				<Grid container>
 					<Grid item xs={12}>
 						<Typography
 							variant="h5"
 							gutterBottom={true}
-							sx={{ color: '#01FFA3' }}
+							sx={{ color: '#01FFA3', fontFamily:'Inter, sans-serif !important', fontWeight:'700' }}
 						>
 							Launching Soon</Typography>
 					</Grid>
@@ -94,11 +95,13 @@ export default function Hero() {
 						<Typography
 							variant="h3"
 							gutterBottom={true}
+							sx={{fontFamily:'Inter, sans-serif !important', fontWeight:'700', fontSize:'60px' }}
 						>
 							Floor Watchers Society</Typography>
 					</Grid>
 					<Grid item xs={12}>
-						<Typography variant="h6">
+						<Typography variant="h6"
+						sx={{fontFamily:'Nunito, sans-serif !important', fontWeight:'400'}}>
 							Floor Watchers Society provides 3333 members real-life utility with exclusive access to once in a lifetime luxury experiences at community and token holder chosen sporting events.
 						</Typography>
 					</Grid>

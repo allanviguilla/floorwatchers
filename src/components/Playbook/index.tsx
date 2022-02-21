@@ -38,11 +38,14 @@ export default function Playbook() {
 			spacing={'column'}
 			marginTop={'50px'}
 		>
-			<Grid item xs={12} sx={{ marginBottom: '50px' }}>
-				<PlaybookTitle variant="h2" align="center">Season 1</PlaybookTitle>
+			<Grid item xs={12} sx={{ marginBottom: '50px'}}>
+				<PlaybookTitle variant="h2" align="center"
+				sx={{ fontFamily:'Inter, sans-serif !important', fontWeight:'900', fontSize:'66px' }}>
+					Season 1 Roadmap
+				</PlaybookTitle>
 			</Grid>
 			<Grid container sx={{ marginBottom: '30px' }} spacing={'40'} justifyContent='center'>
-				<Grid item xs={12} sm={4}>
+				<Grid item xs={12} sm={12} md={4}>
 					<Grid container justifyContent={'center'}>
 						<FWSPaper elevation={6}>
 							<Grid
@@ -59,7 +62,7 @@ export default function Playbook() {
 						</FWSPaper>
 					</Grid>
 				</Grid>
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} sm={12} md={6}>
 					<Grid
 						container
 						direction="row"
