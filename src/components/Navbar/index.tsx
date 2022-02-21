@@ -30,22 +30,22 @@ const FWSNav = styled(AppBar)({
 	marginRIght: '10px'
 });
 const FWSWalletBtn = styled(WalletMultiButton)({
-	background: '#01FFA3',
-	color: '#291381',
-	borderRadius: '100px',
 	"&:hover": {
 		color: 'white !important',
 		backgroundColor: '#01FFA3 !important'
-	}
+	},
+	background: '#01FFA3',
+	color: '#291381',
+	borderRadius: '100px',
 });
 const FWSWalletDisconnectBtn = styled(WalletDisconnectButton)({
-	background: '#01FFA3',
-	color: '#291381',
-	borderRadius: '100px',
 	"&:hover": {
 		color: 'white !important',
 		backgroundColor: '#01FFA3 !important'
-	}
+	},
+	background: '#01FFA3',
+	color: '#291381',
+	borderRadius: '100px',
 });
 const SocialBtn = styled(IconButton)({
 	backgroundColor: '#39EB9B',
