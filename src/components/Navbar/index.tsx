@@ -145,7 +145,7 @@ export const Navbar = () => {
 										<Typography
 											variant="h6"
 											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
-											Playbook
+											Roadmap
 										</Typography>
 									</MenuItem>
 								</a>
@@ -168,7 +168,6 @@ export const Navbar = () => {
 											variant="h6"
 											sx={{ fontFamily: 'Nunito, sans-serif !important', fontWeight: '600', fontSize: '36px' }}>
 											White Paper
-
 										</Typography>
 									</MenuItem>
 								</a>
