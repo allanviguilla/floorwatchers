@@ -1,0 +1,168 @@
+{
+	"version": "0.1.0",
+	"name": "fws_raffle_program",
+	"instructions": [
+	  {
+		"name": "create",
+		"accounts": [
+		  {
+			"name": "raffleAuthority",
+			"isMut": true,
+			"isSigner": true
+		  },
+		  {
+			"name": "raffleAccount",
+			"isMut": true,
+			"isSigner": false
+		  }
+		],
+		"args": [
+		  {
+			"name": "raffleType",
+			"type": "u64"
+		  }
+		]
+	  },
+	  {
+		"name": "addRaffleEntry",
+		"accounts": [
+		  {
+			"name": "raffleAccount",
+			"isMut": true,
+			"isSigner": false
+		  },
+		  {
+			"name": "raffleAuthority",
+			"isMut": false,
+			"isSigner": true
+		  }
+		],
+		"args": [
+		  {
+			"name": "holders",
+			"type": {
+			  "vec": "publicKey"
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "draw",
+		"accounts": [
+		  {
+			"name": "raffleAccount",
+			"isMut": true,
+			"isSigner": false
+		  },
+		  {
+			"name": "raffleAuthority",
+			"isMut": false,
+			"isSigner": true
+		  },
+		  {
+			"name": "recentBlockhashes",
+			"isMut": false,
+			"isSigner": false
+		  }
+		],
+		"args": []
+	  },
+	  {
+		"name": "claim",
+		"accounts": [
+		  {
+			"name": "authority",
+			"isMut": false,
+			"isSigner": true
+		  },
+		  {
+			"name": "raffleAccount",
+			"isMut": false,
+			"isSigner": false
+		  }
+		],
+		"args": []
+	  }
+	],
+	"accounts": [
+	  {
+		"name": "RaffleAccount",
+		"type": {
+		  "kind": "struct",
+		  "fields": [
+			{
+			  "name": "head",
+			  "type": "u64"
+			},
+			{
+			  "name": "tail",
+			  "type": "u64"
+			},
+			{
+			  "name": "pubkey",
+			  "type": "publicKey"
+			},
+			{
+			  "name": "raffleType",
+			  "type": "u64"
+			},
+			{
+			  "name": "raffleAuthority",
+			  "type": "publicKey"
+			},
+			{
+			  "name": "raffleWinner",
+			  "type": "publicKey"
+			},
+			{
+			  "name": "holders",
+			  "type": {
+				"array": [
+				  {
+					"defined": "RaffleAccountData"
+				  },
+				  10000
+				]
+			  }
+			}
+		  ]
+		}
+	  },
+	  {
+		"name": "RaffleAccountData",
+		"type": {
+		  "kind": "struct",
+		  "fields": [
+			{
+			  "name": "holder",
+			  "type": "publicKey"
+			}
+		  ]
+		}
+	  }
+	],
+	"types": [
+	  {
+		"name": "RaffleAccountData",
+		"type": {
+		  "kind": "struct",
+		  "fields": [
+			{
+			  "name": "holder",
+			  "type": "publicKey"
+			}
+		  ]
+		}
+	  }
+	],
+	"errors": [
+	  {
+		"code": 6000,
+		"name": "NoDataError",
+		"msg": "No Data"
+	  }
+	],
+	"metadata": {
+	  "address": "AUV6acTchdGPST1pexjEMTJ8KehrjQHJoXwiMntdYJ7p"
+	}
+  }
