@@ -27,7 +27,7 @@ export default function Footer() {
 							noWrap
 							className="logo-container"
 							component="div"
-							sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+							sx={{ mr: 2}}
 						>
 							<img src={logo.href} width="120" height="75" style={{ marginTop: '10px' }} />
 						</Typography>

@@ -11,10 +11,6 @@ const SIL = new URL(
 	'../../assets/silhouette.png',
 	import.meta.url
 );
-// const SILSVG = new URL(
-// 	'../../assets/SIL_3.svg',
-// 	import.meta.url
-// );
 const xsStyles = {
 	position: 'absolute',
 	left: '5px',
