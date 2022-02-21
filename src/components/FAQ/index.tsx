@@ -100,7 +100,8 @@ export default function FAQ() {
 						<Typography variant='h5' sx={{
 							color: '#360ED6',
 							fontWeight: '700',
-							marginBottom: '10px'
+							marginBottom: '10px',
+							fontFamily:'Inter, sans-serif !important', fontSize:'24px'
 						}}>Frequently Asked Questions</Typography>
 						{faq.map((faqAcc, index) => {
 							return (
@@ -108,10 +109,10 @@ export default function FAQ() {
 									<AccordionSummary aria-controls={index + "d-content"} id={index + "d-header"}
 										expandIcon={expanded === index ? minimizeIcon : expandIcon}
 									>
-										<Typography sx={{ fontWeight: '700' }}>{faqAcc.summary.replace(/\n/g,"<br>")}</Typography>
+										<Typography sx={{ fontFamily:'Inter, sans-serif !important', fontWeight:'700', fontSize:'16px' }}>{faqAcc.summary.replace(/\n/g,"<br>")}</Typography>
 									</AccordionSummary>
 									<AccordionDetails>
-										<Typography>
+										<Typography sx={{fontFamily:'Inter, sans-serif !important', fontWeight:'400', fontSize:'14px'}}>
 											{faqAcc.detail}
 										</Typography>
 									</AccordionDetails>

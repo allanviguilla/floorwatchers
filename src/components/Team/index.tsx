@@ -56,7 +56,7 @@ export default function Team() {
 			spacing={'column'}
 			marginTop={'50px'}
 		>
-			<TeamTitle variant="h2">Meet the FWS Family</TeamTitle>
+			<TeamTitle variant="h2" sx={{fontFamily:'Inter, sans-serif !important', fontWeight:'900', fontSize:'66px'}}>Meet the FWS Family</TeamTitle>
 			<Grid container spacing={3} justifyContent={'center'} marginTop={'10px'}>
 				{team.map((member, index) => {
 					return (

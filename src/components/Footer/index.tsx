@@ -33,7 +33,7 @@ export default function Footer() {
 						</Typography>
 					</Grid>
 					<Grid item xs={12} marginBottom={2}>
-						<Typography sx={{ fontSize: '10px' }}>
+						<Typography sx={{ fontSize: '15px', fontFamily:'Inter, sans-serif !important', fontWeight:'400'}}>
 							Exclusive NFT Collection
 						</Typography>
 					</Grid>
@@ -72,10 +72,10 @@ export default function Footer() {
 			<Grid item xs={12} marginBottom={10}>
 				<Grid container>
 					<Grid item xs={6}>
-						<Typography sx={{ fontSize: '15px' }}>Copyright © 2022 Floor Watchers Society</Typography>
+						<Typography sx={{ fontSize: '15px', fontFamily:'Inter, sans-serif !important', fontWeight:'400'}}>Copyright © 2022 Floor Watchers Society</Typography>
 					</Grid>
 					<Grid item xs={6}>
-						<Typography align='center' sx={{ fontSize: '15px' }}>Launching Spring 2022</Typography>
+						<Typography align='center' sx={{ fontSize: '15px', fontFamily:'Inter, sans-serif !important', fontWeight:'400'}}>Launching Spring 2022</Typography>
 					</Grid>
 				</Grid>
 			</Grid>
