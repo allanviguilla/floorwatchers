@@ -65,17 +65,6 @@ export default function FAQ() {
 	const [expanded, setExpanded] = React.useState<number | false>(0);
 	const expandIcon = <FontAwesomeIcon icon={faPlusIcon} style={{ color: '#360ED6' }} />;
 	const minimizeIcon = <FontAwesomeIcon icon={faXMarkIcon} style={{ color: '#360ED6' }} />;
-	const theme = useTheme();
-	// const styles = (theme: any) => ({
-	// 	root: {
-	// 		backgroundColor: 'blue',
-	// 		// Match [sm, md)
-	// 		//       [600px, 900px)
-	// 		[theme.breakpoints.between('sm', 'md')]: {
-	// 			backgroundColor: 'red',
-	// 		},
-	// 	},
-	// });
 	const handleChange =
 		(panel: number) => (event: React.SyntheticEvent, newExpanded: boolean) => {
 			setExpanded(newExpanded ? panel : false);
@@ -86,7 +75,7 @@ export default function FAQ() {
 			justifyContent={'center'}
 			alignContent={'center'}
 			spacing={'column'}
-			marginTop={'50px'}
+			marginTop={'100px'}
 		>
 			<Grid item md={12} sx={{
 				display: { xs: 'none', sm: 'none', md: 'flex' },

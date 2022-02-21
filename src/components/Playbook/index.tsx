@@ -25,7 +25,7 @@ const PlaybookTitle = styled(Typography)({
 const FWSPaper = styled(Paper)({
 	padding: '20px',
 	borderRadius: '20px',
-	width:'300px',
+	width: '300px',
 	boxShadow: '0px 0px 34px rgba(54, 14, 214, 0.3)'
 });
 export default function Playbook() {
@@ -43,19 +43,21 @@ export default function Playbook() {
 			</Grid>
 			<Grid container sx={{ marginBottom: '30px' }} spacing={'40'} justifyContent='center'>
 				<Grid item xs={12} sm={4}>
-					<FWSPaper elevation={6}>
-						<Grid
-							container
-							direction="row"
-							justifyContent={'center'}
-							alignItems='center'
-							style={{ height: '200px' }}>
-							<Typography>
-								<img src={socDraw.href} width="300px"></img>
-							</Typography>
-						</Grid>
+					<Grid container justifyContent={'center'}>
+						<FWSPaper elevation={6}>
+							<Grid
+								container
+								direction="row"
+								justifyContent={'center'}
+								alignItems='center'
+								style={{ height: '200px' }}>
+								<Typography>
+									<img src={socDraw.href} width="300px"></img>
+								</Typography>
+							</Grid>
 
-					</FWSPaper>
+						</FWSPaper>
+					</Grid>
 				</Grid>
 				<Grid item xs={12} sm={6}>
 					<Grid

@@ -2,36 +2,43 @@
     {
         "name": "Khalil",
         "img": "fws_fem_purple.png",
-        "role": "Head of Tech"
+        "role": "Head of Tech",
+		"href":""
     },
 	{
 		"name":"Sommo",
 		"img":"fws_male_blue.png",
-		"role":"FWS Lead"
+		"role":"FWS Lead",
+		"href":""
 	},
 	{
 		"name":"Allan",
 		"img":"fws_male_cyan.png",
-		"role":"Head of Marketing"
+		"role":"Head of Marketing",
+		"href":""
 	},
 	{
 		"name":"Dre",
 		"img":"fws_male_olive.png",
-		"role":"Head of Design"
+		"role":"Head of Design",
+		"href":""
 	},
 	{
 		"name":"Juan",
 		"img":"fws_male_orange.png",
-		"role":"Design"
+		"role":"Design",
+		"href":""
 	},
 	{
 		"name":"Rory",
 		"img":"fws_male_pink.png",
-		"role":"Business Development"
+		"role":"Business Development",
+		"href":""
 	},
 	{
 		"name":"Sook",
 		"img":"fws_male_yellow.png",
-		"role":"Community Manager"
+		"role":"Community Manager",
+		"href":""
 	}
 ]
