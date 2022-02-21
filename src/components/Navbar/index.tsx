@@ -34,7 +34,7 @@ const FWSWalletBtn = styled(WalletMultiButton)({
 	color: '#291381',
 	borderRadius: '100px',
 	"&:hover": {
-		color: 'white',
+		color: 'white !important',
 		backgroundColor: '#01FFA3 !important'
 	}
 });
@@ -43,7 +43,7 @@ const FWSWalletDisconnectBtn = styled(WalletDisconnectButton)({
 	color: '#291381',
 	borderRadius: '100px',
 	"&:hover": {
-		color: 'white',
+		color: 'white !important',
 		backgroundColor: '#01FFA3 !important'
 	}
 });
