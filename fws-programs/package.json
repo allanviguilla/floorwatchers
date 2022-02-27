@@ -1,6 +1,7 @@
 {
     "dependencies": {
-        "@project-serum/anchor": "^0.20.1"
+        "@project-serum/anchor": "^0.20.1",
+        "@project-serum/serum": "^0.13.61"
     },
     "devDependencies": {
         "@types/mocha": "^9.0.0",

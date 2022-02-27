@@ -2,7 +2,7 @@ pub mod randomness;
 pub mod recent_blockhashes;
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::sysvar;
-use anchor_spl::token::{self, CloseAccount, Mint, SetAuthority, Token, TokenAccount, Transfer};
+use anchor_spl::token::{self, CloseAccount, MintTo, Mint, SetAuthority, Token, TokenAccount, Transfer};
 
 declare_id!("AUV6acTchdGPST1pexjEMTJ8KehrjQHJoXwiMntdYJ7p");
 
@@ -36,7 +36,19 @@ pub mod fws_raffle_program {
 		
 		Ok(())
 	}
-	pub fn draw(ctx: Context<Draw>) -> ProgramResult {
+	pub fn send_reward(ctx: Context<SendReward>, amount: u64) -> ProgramResult{
+		let raffle_account = *ctx.accounts.raffle_account.load().unwrap();
+		let reward_mint = ctx.accounts.reward_mint.clone();
+		let reward_authority = ctx.accounts.raffle_authority.to_account_info();
+		let raffle_winner = ctx.accounts.raffle_winner.clone();
+
+		// if raffle_account.raffle_winner != *raffle_winner.key {
+		// 	msg!("Invalid raffle winner")
+		// }
+		token::mint_to(ctx.accounts.into(), amount);
+		Ok(())
+	}
+	pub fn draw(ctx: Context<Draw>, amount: u64) -> ProgramResult {
 		let raffle_account = ctx.accounts.raffle_account.load_mut();
 		let mut account = raffle_account.unwrap();
 		let accounts_end = account.head as usize;
@@ -50,6 +62,7 @@ pub mod fws_raffle_program {
 		msg!("Winner: {:?}", account.holders[winner_index as usize]);
 		let winner = account.holders[winner_index as usize];
 		account.raffle_winner = winner.holder;
+
 		Ok(())
 	}
 }
@@ -57,6 +70,7 @@ pub mod fws_raffle_program {
 #[derive(Accounts)]
 #[instruction(raffle_type: u64)]
 pub struct Create<'info> {
+	/// CHECK: will verify this somehow somewhere
 	#[account(mut, signer)]
 	raffle_authority: AccountInfo<'info>,
 	#[account(zero)]
@@ -68,17 +82,40 @@ pub struct Draw<'info> {
 	#[account(mut)]
 	raffle_account: AccountLoader<'info, RaffleAccount>,
 	raffle_authority: Signer<'info>,
+	/// CHECK: blockhashes
 	#[account(address = sysvar::recent_blockhashes::ID)]
     pub recent_blockhashes: UncheckedAccount<'info>,
 }
 
-// #[derive(Accounts)]
-// pub struct Claim<'info> {
-// 	#[account(signer,
-// 	constraint = raffle_account.to_account_info().key == authority.key )]
-// 	authority: AccountInfo<'info>, //winner of the raffle
-// 	raffle_account: AccountLoader<'info, RaffleAccount>,
-// }
+#[derive(Accounts)]
+pub struct SendReward<'info> {
+	#[account(mut)]
+	pub raffle_account: AccountLoader<'info, RaffleAccount>,
+	raffle_authority: Signer<'info>,
+	/// CHECK: do some check
+	#[account(mut)]
+	pub raffle_winner: AccountInfo<'info>,
+	#[account(mut)]
+	pub reward_mint: Account<'info, Mint>, 
+	/// CHECK: do some check
+	#[account(signer)]
+	pub reward_mint_authority: AccountInfo<'info>,
+	pub token_program: Program<'info, Token>,
+}
+
+impl<'info> From<&mut SendReward<'info>>
+    for CpiContext<'_, '_, '_, 'info, MintTo<'info>>
+{
+    fn from(accounts: &mut SendReward<'info>) -> Self {
+        let cpi_accounts = MintTo {
+			mint: accounts.reward_mint.to_account_info().clone(),
+            to: accounts.raffle_winner.clone(),
+            authority: accounts.reward_mint_authority.to_account_info().clone(),
+        };
+        let cpi_program = accounts.token_program.to_account_info();
+        CpiContext::new(cpi_program, cpi_accounts)
+    }
+}
 
 #[derive(Accounts)]
 #[instruction(holders: Vec<Pubkey>)]
@@ -89,18 +126,15 @@ pub struct AddRaffleEntry<'info> {
 }
 
 #[account(zero_copy)]
-pub struct RaffleAccount {
+pub struct RaffleAccount{
 	head: u64,
     tail: u64,
 	pub pubkey: Pubkey,
 	pub raffle_type: u64,
 	pub raffle_authority: Pubkey, //32
-	// pub spl_mint: Pubkey,      //32
 	pub raffle_winner: Pubkey, //32
 	// claimed: bool,  //1
 	// pub timestamp: i64, //8
-	// pub reward_mint: Pubkey,   //32
-	// pub reward_authority_bump: u8, //8
 	holders: [RaffleAccountData; 3333],
 }
 
@@ -122,7 +156,6 @@ impl RaffleAccount {
         std::convert::TryInto::try_into(counter % 10000).unwrap()
     }
 }
-
 #[error]
 pub enum ErrorCode {
     #[msg("No Data")]
