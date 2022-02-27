@@ -5,10 +5,15 @@ import { PublicKey, Keypair } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
 import * as SERUM from '@project-serum/serum';
 import * as fs from 'fs';
+import * as path from 'path';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const tokenKeypair = require('./fws-token-keypair.json');
-// const srm = require("@project-serum/serum").TokenInstructions;
+let mintKeypair;
+if(fs.existsSync(path.join(__dirname +'/mint-key.json'))){
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	mintKeypair = require('./mint-key.json');
+}
+
+
 
 describe('fws-raffle-program', () => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -28,8 +33,13 @@ describe('fws-raffle-program', () => {
     let mint = null;
 
     it('Initializes test state', async () => {
-        mint = await createMint(provider);
-        console.log(`Mint: ${mint.toString()}`);
+        if (mintKeypair) {
+			mint = anchor.web3.Keypair.fromSecretKey(Uint8Array.from(mintKeypair)).publicKey;
+            console.log(`Previous Mint: ${mint}`);
+        } else {
+            mint = await createMint(provider);
+            console.log(`New Mint: ${mint.toString()}`);
+        }
     });
 
     it('Create!', async () => {
@@ -56,7 +66,7 @@ describe('fws-raffle-program', () => {
     it('Add Raffle Entry!', async () => {
         console.log(`Adding raffle entries for: ${raffleAccount.publicKey.toString()}`);
         for (let k = 0; k < buff_holders.length; k += 25) {
-			//buff_holders.slice(k, k + 25)
+            //buff_holders.slice(k, k + 25)
             await program.rpc.addRaffleEntry([new PublicKey('6taK1FRm7PGFWP3yKgsWGeaApFWJN8BqRnMjVwU4PbPE')], {
                 accounts: {
                     raffleAccount: raffleAccount.publicKey,
@@ -106,14 +116,24 @@ describe('fws-raffle-program', () => {
         // }
     });
     it('Send Reward!', async () => {
-		let winnerToken = null;
+        let winnerToken = null;
         const _raffleAccount = await program.account.raffleAccount.fetch(raffleAccount.publicKey);
-		try{
-			winnerToken = await createTokenAccount(provider, mint, _raffleAccount.raffleWinner);
-			console.log(`Winner Token ${winnerToken}`)
-		}catch(e){
-			console.log(`Could not create token account for winner: ${e}`)
-		}
+        try {
+			// anchor.web3.Connection.
+			const winnerTokenAccount = await provider.connection.getParsedTokenAccountsByOwner(_raffleAccount.raffleWinner, { mint: mint });
+			// console.log(winnerTokenAccount)
+			// winnerTokenAccount.value.forEach((account)=>{
+			// 	console.log(account.account.data.parsed);
+			// 	console.log(account.pubkey.toString());
+			// })
+			if(winnerTokenAccount.value.length == 0){
+				winnerToken = await createTokenAccount(provider, mint, _raffleAccount.raffleWinner);
+			}else{
+				winnerToken = winnerTokenAccount.value[0].pubkey
+			}
+        } catch (e) {
+            console.log(`Could not create token account for winner: ${e}`);
+        }
         try {
             const tx = await program.rpc.sendReward(new anchor.BN(1), {
                 accounts: {
@@ -138,11 +158,14 @@ async function createMint(provider, authority?) {
     if (authority === undefined) {
         authority = provider.wallet.publicKey;
     }
-    const mint = anchor.web3.Keypair.generate();
-    // while (!mint.publicKey.toBase58().startsWith('FWS')) {
-	// 	console.log(mint.publicKey.toBase58());
-    //     mint = Keypair.generate();
-    // }
+    let mint = anchor.web3.Keypair.generate();
+    while (!mint.publicKey.toBase58().startsWith('FWS')) {
+        mint = Keypair.generate();
+    }
+	const file = fs.createWriteStream('./mint-key.json');
+	file.write('[')
+	file.write(mint.secretKey.toString());
+	file.write(']')
     const instructions = await createMintInstructions(provider, authority, mint.publicKey);
 
     const tx = new anchor.web3.Transaction();
